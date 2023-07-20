@@ -1,0 +1,14 @@
+# Local git repo path in which you wants to sync your files.
+git_dir: "/home/pritam/Desktop/programming/github/my_config/"
+
+# Single file path with some keys.
+".bashrc":
+    "sys_dir": "/home/pritam/"
+    "gdir": "linux_ubuntu/"
+    "new_name": "bashrc.sh"
+
+".zhsrc":
+    "sys_dir": "/home/pritam/"
+    "gdir": "linux_ubuntu/"
+    "new_name": "zshrc.sh"
+
