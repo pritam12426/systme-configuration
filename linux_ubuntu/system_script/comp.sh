@@ -58,4 +58,7 @@ fi
 
 if [[ $? = 0 ]]; then
 	"./bin/$new_name.out"
+	exit 0
+else
+	exit 1
 fi

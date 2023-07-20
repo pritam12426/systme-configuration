@@ -8,7 +8,7 @@ alias eza='vim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh'
 # Fro change dir()
 alias rdir='cd ~/Desktop/programming/rust/'
 alias cdir='cd ~/Desktop/programming/c_lan/'
-alias gdir='cd ~/Desktop/programming/github/'
+alias gdir='cd ~/Desktop/programming/git_repositories/'
 alias pydir='cd ~/Desktop/programming/python/practic/'
 alias spdir='cd ~/Desktop/programming/system_script/'
 

@@ -16,13 +16,13 @@ alias scrcpy_r='scrcpy -m 1080 --max-fps=60 -r ~/Videos/screencasts/scrcpy_$(dat
 # For change dir()
 alias rdir="cd ~/Desktop/programming/rust/"
 alias cdir="cd ~/Desktop/programming/c_lan/"
-alias gdir="cd ~/Desktop/programming/github/"
+alias gdir="cd ~/Desktop/programming/git_repositories/"
 alias pydir="cd ~/Desktop/programming/python/practic/"
 alias spdir="cd ~/Desktop/programming/system_script/"
 # ----------------------------------------------------------
 
 HISTCONTROL=ignoreboth
-export EDITOR='code'
+export EDITOR='vim'
 # append to the history file, don't overwrite it
 shopt -s histappend
 
