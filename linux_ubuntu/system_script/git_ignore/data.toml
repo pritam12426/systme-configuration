@@ -1,0 +1,19 @@
+ide = ["CLion",
+	"JupterNoteBook",
+	"SublimeText",
+	"VisualStudioCode",
+	"PyCharm",
+	"IntelliJ",
+	"Xcode",
+	"AndroidStudio",
+	"Eclips",
+	"NotepadPP",
+]
+
+language = ["C",
+	"C++",
+	"C#",
+	"Java",
+	"Rust",
+	"Python",
+]
