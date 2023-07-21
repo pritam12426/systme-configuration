@@ -49,7 +49,7 @@ if len(all_file) != 0:
 		user_input: str = input(f"Enter 'so/no' in between '0 to {len(all_file) - 1}' >> ").lower()
 
 		if user_input == "exit" or user_input == "q":
-			exit()
+			exit(0)
 
 		elif user_input == "clear":
 			os.system(find_type_system()[0])

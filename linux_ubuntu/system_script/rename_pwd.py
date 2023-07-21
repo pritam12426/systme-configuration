@@ -11,6 +11,12 @@ if os.getenv("HOME") not in os.getcwd():
 	exit("This is 'ROOT' directory.")
 
 
+def get_max_len(file_content: list[str]) -> int:
+	_file_content: str = sorted(file_content, key=len)[-1]
+	print(_file_content)
+	return len(_file_content)
+
+
 def remove_underscore(text: str) -> str:
 	new_text: str = re.sub(r"[^\x00-\x7F]+", " ", text)
 	new_text: str = re.sub("_+", " ", new_text)
@@ -95,10 +101,11 @@ if len(new_name.keys()) == 0:
 	exit(f"Nothing to change in '{int_value.get('total')}' items.")
 
 if ".git" in all_file:
+	maximum: int = get_max_len(list(new_name.keys()))
 	print("Sorry! This is a 'git-REPOSITORY'.")
-	print(f" {int_value.get('file')} files, and {int_value.get('folder')} folder, will get effected.")
+	print(f" {int_value.get('renamed_file')} files, and {int_value.get('renamed_folder')} folder, will get effected.")
 	for i in new_name.keys():
-		print(f"  ● {i}")
+		print(f"  ● {i:{maximum}} 🠪 {new_name.get(i)}")
 
 	if input("\nWants to continue? [y/n] ").casefold() == "n":
 		exit("ABORT RENAMING PWD")
@@ -107,10 +114,7 @@ if ".git" in all_file:
 
 for i in new_name.keys():
 	os.rename(i, new_name.get(i))
-	# print(f"{i} 🠪 {new_name.get(i)}")
-
-# pass
-# "🖿 ☶"
+# print(f"{i} 🠪 {new_name.get(i)}")
 
 print(f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
       f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"

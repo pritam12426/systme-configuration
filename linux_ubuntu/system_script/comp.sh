@@ -27,38 +27,39 @@ elif [[ "$file" =~ .rs$ ]]; then
 	command="/usr/bin/rustc"
 elif [[ "$file" =~ .py$ ]]; then
 	python3 "$file"
-	exit 0
+	exit "$?"
 elif [[ "$file" =~ .sh$ ]]; then
 	"./$file"
-	exit 0
+	exit "$?"
 else
 	root_data=$(cat "$file" | head -n 1 | cut -c 3-)
 
 	if [[ -f "$root_data" ]]; then
-		$root_data $file
-		exit 0
+		$root_data "$file"
+		exit "$?"
 	else
 		echo "| '$file' Unknown file type."
 		exit 1
 	fi
 fi
 
+filename=$(basename "$file")
+path=$(dirname "$file")
 
 # new_name="${file%.*}"
-new_name="${file//./-}"
+new_name="${filename//./-}"
 
 # Make bin dir if it is not present.
-if ! [ -d "./bin" ]; then
-	mkdir "./bin"
+if ! [ -d "$path/bin" ]; then
+	mkdir "$path/bin"
 fi
 
-
 # Run command for 'gcc' or 'gpp' according to the file type.
-"$command" "$file" -o "./bin/$new_name.out"
+"$command" "$path/$filename" -o "$path/bin/$new_name.out"
 
-if [[ $? = 0 ]]; then
-	"./bin/$new_name.out"
-	exit 0
+if [[ "$?" = 0 ]]; then
+	"$path/bin/$new_name.out"
+	exit "$?"
 else
-	exit 1
+	exit "$?"
 fi

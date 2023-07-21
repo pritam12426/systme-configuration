@@ -9,10 +9,11 @@ if ".git" not in listdir("."):
 
 from tomllib import load
 from sys import path
-from requests import get
+from requests import get, exceptions
 
 
 def get_info(toml_data: list[str], fun_type: str) -> list[str]:
+	toml_data: list[str] = sorted(toml_data, key=len)
 	for _index, _i in enumerate(toml_data, start=1):
 		print(f"{_index:0>2} 🠪 {_i}")
 
@@ -41,13 +42,16 @@ url.extend(get_info(toml_content.pop("ide"), "IDE"))
 url.extend(get_info(toml_content.pop("language"), "LANGUAGE"))
 
 if url == ["~", "~"]:
-	print("exit")
 	exit(1)
 
 if "~" in url:
 	url.remove("~")
 
-web_data: str = get(f"https://www.toptal.com/developers/gitignore/api/{','.join(url).lower()}").text
+try:
+	web_data: str = get(f"https://www.toptal.com/developers/gitignore/api/{','.join(url).lower()}").text
+except exceptions.ConnectionError:
+	print("Check your network.")
+	exit(1)
 
 url: str = ""
 
