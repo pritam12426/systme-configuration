@@ -19,13 +19,7 @@ def find_high_equal(text: list[str]) -> int:
 
 def get_title(raw_name: str) -> str:
 	name = raw_name.rsplit(".", maxsplit=1)[0].replace("_", " ")
-
-	if len(name) >= 42:
-		name = name[:42] + "..."
-	else:
-		name = name + " ~"
-
-	return f"~ {name.upper()}"
+	return f"~ {name.upper()} ~"
 
 
 def find_type_system() -> tuple:
@@ -113,7 +107,9 @@ if len(all_file) != 0:
 			print("Invalid input.")
 			continue
 
-		run(["ffplay", "-window_title", f"{get_title(command)}", "-loop", "-1", command], capture_output=True)
+		run(
+			["ffplay", "-window_title", get_title(command), "-loop", "-1", command],
+			capture_output=True)
 
 else:
 	exit(f"There is not media file in '{os.getcwd()}'")

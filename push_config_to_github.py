@@ -112,10 +112,12 @@ if uncommitted_file is not None:
 			match commit:
 				case "":
 					commit += commit
+					gap: str = "\n\n"
 				case _:
-					commit = "\n\n" + commit
+					commit = "\n\n" + commit + "\n\n"
+					gap: str = "\n"
 
-			commit += f"\n\nMAKE CHANGE IN >>\n{' '*16} - ./"
+			commit += f"Make Change In >>{gap}{' '*16} - ./"
 			commit += f"\n{' '*16} - ./".join(uncommitted_file)
 			local_repo.index.add(["*"])
 			local_repo.index.commit(commit)

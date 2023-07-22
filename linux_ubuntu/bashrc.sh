@@ -3,7 +3,6 @@ export PATH=$HOME/Desktop/programming/system_script:$PATH
 
 # Alias ---------------------------------------------------
 alias h="history"
-alias lz="lazygit"
 alias erc="vim ~/.bashrc"
 alias gfind="ls --color=auto -aF | grep"
 alias enc="vim ~/.config/nvim/init.vim"

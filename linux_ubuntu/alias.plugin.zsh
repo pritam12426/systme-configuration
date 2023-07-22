@@ -13,7 +13,6 @@ alias pydir='cd ~/Desktop/programming/python/practic/'
 alias spdir='cd ~/Desktop/programming/system_script/'
 
 # System scrcpy with out python
-alias lz='lazygit'
 alias gfind="ls --color=auto -aF | grep"
 alias exiftool_f='exiftool -overwrite_original'
 alias rmdes='exiftool -overwrite_original -longdescription="" -description=""'

@@ -13,113 +13,116 @@ if os.getenv("HOME") not in os.getcwd():
 
 def get_max_len(file_content: list[str]) -> int:
 	_file_content: str = sorted(file_content, key=len)[-1]
-	print(_file_content)
 	return len(_file_content)
 
 
-def remove_underscore(text: str) -> str:
-	new_text: str = re.sub(r"[^\x00-\x7F]+", " ", text)
-	new_text: str = re.sub("_+", " ", new_text)
-	new_text: str = re.sub(" +", "_", new_text)
+def formate_string(_text: str) -> str:
+	_new_text: str = re.sub(r"[^\x00-\x7F]+", "", _text)
+	_new_text: str = re.sub("_+", "_", _new_text)
+	_new_text: str = re.sub("'.'+", "_", _new_text)
+	_new_text: str = re.sub(" +", "_", _new_text)
 
 	for _i in list(r"!#$%&'()*+,-./:;<=>?@[]^_`{|}~"):
-		if f"_{_i}" in new_text:
-			new_text: str = new_text.replace(f"_{_i}", f"{_i}")
+		if f"_{_i}" in _new_text:
+			_new_text: str = _new_text.replace(f"_{_i}", f"{_i}")
 
-		if f"{_i}_" in new_text:
-			new_text: str = new_text.replace(f"{_i}_", f"{_i}")
+		if f"{_i}_" in _new_text:
+			_new_text: str = _new_text.replace(f"{_i}_", f"{_i}")
 
-		if f"{_i + _i}" in new_text:
-			new_text: str = new_text.replace(f"{_i + _i}", _i)
-	new_text: str = new_text.replace(".", "_")
+		if f"{_i + _i}" in _new_text:
+			_new_text: str = _new_text.replace(f"{_i + _i}", _i)
 
-	return new_text.removesuffix("_").removeprefix("_").lower()
+	return _new_text.removesuffix("_").removeprefix("_").lower()
 
 
 def rename_file(old_name: str) -> str:
 	split_name: list[str] = old_name.rsplit(".", maxsplit=1)
-	return f"{remove_underscore(split_name[0])}.{split_name[1]}".lower()
+	return f"{formate_string(split_name[0])}.{split_name[1]}".lower()
 
 
-def get_dict(list_of_content: list[str]) -> dict:
-	result: dict = {}
+def get_dict(_list_of_content: list[str]) -> dict:
+	_result: dict = {}
 
-	file: int = 0
-	folder: int = 0
-	hidden_file: int = 0
-	hidden_folder: int = 0
-	unknown: int = 0
-	untouched: int = 0
+	_file: int = 0
+	_folder: int = 0
+	_hidden_file: int = 0
+	_hidden_folder: int = 0
+	_unknown: int = 0
+	_untouched: int = 0
 
-	for _i in sorted(list_of_content):
+	for _i in _list_of_content:
 		if not _i.startswith("."):
 			if os.path.isfile(_i):
 				if "." in _i:
-					new_file_name: str = rename_file(_i)
-					if _i != new_file_name:
-						result |= {_i: new_file_name}
-						file += 1
+					file = rename_file(_i)
+					_new_name: str = file
+					if _i != _new_name:
+						_result |= {_i: _new_name}
+						_file += 1
 					else:
-						untouched += 1
+						_untouched += 1
 				else:
-					unknown += 1
+					_unknown += 1
 			elif os.path.isdir(_i):
-				new_dir_name: str = remove_underscore(_i)
-				if _i != new_dir_name:
-					result |= {_i: new_dir_name}
-					folder += 1
+				_new_name: str = formate_string(_i)
+				if _i != _new_name:
+					_result |= {_i: _new_name}
+					_folder += 1
 				else:
-					untouched += 1
+					_untouched += 1
 		else:
-			untouched += 1
+			_untouched += 1
 			if os.path.isfile(_i):
-				hidden_file += 1
+				_hidden_file += 1
 			else:
-				hidden_folder += 1
+				_hidden_folder += 1
 
-		result |= {
+		_result |= {
 			"int_value": {
-				"total_rename": file + folder,
-				"renamed_file": file,
-				"renamed_folder": folder,
-				"hidden": hidden_file + hidden_folder,
-				"hidden_file": hidden_file,
-				"hidden_folder": hidden_folder,
-				"unknown": unknown,
-				"untouched": untouched,
-				"total": len(list_of_content)
+				"total_rename": _file + _folder,
+				"renamed_file": _file,
+				"renamed_folder": _folder,
+				"hidden": _hidden_file + _hidden_folder,
+				"hidden_file": _hidden_file,
+				"hidden_folder": _hidden_folder,
+				"unknown": _unknown,
+				"untouched": _untouched,
+				"total": len(_list_of_content)
 			}
 		}
-	return result
+	return _result
 
 
-all_file: list[str] = os.listdir()
+all_file: list[str] = sorted(os.listdir())
 new_name: dict = get_dict(all_file)
 int_value: dict = new_name.pop("int_value")
+keys_new_name: list[str] = list(new_name.keys())
 
-if len(new_name.keys()) == 0:
+if len(keys_new_name) == 0:
 	exit(f"Nothing to change in '{int_value.get('total')}' items.")
 
 if ".git" in all_file:
-	maximum: int = get_max_len(list(new_name.keys()))
+	maximum: int = get_max_len(keys_new_name)
 	print("Sorry! This is a 'git-REPOSITORY'.")
 	print(f" {int_value.get('renamed_file')} files, and {int_value.get('renamed_folder')} folder, will get effected.")
-	for i in new_name.keys():
+	for i in keys_new_name:
 		print(f"  ● {i:{maximum}} 🠪 {new_name.get(i)}")
 
-	if input("\nWants to continue? [y/n] ").casefold() == "n":
+	if input("\nWants to continue? [y/n] ").casefold() != "y":
 		exit("ABORT RENAMING PWD")
 	else:
 		print("\n")
 
 for i in new_name.keys():
 	os.rename(i, new_name.get(i))
-# print(f"{i} 🠪 {new_name.get(i)}")
+	# print(f"{i} 🠪 {new_name.get(i)}")
 
-print(f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
-      f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"
-      f"{'HIDDEN:':13}{int_value.get('hidden')}\n\t{'☶  File:':12}{int_value.get('hidden_file')}\n"
-      f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"
-      f"{'Untouched:':13}{int_value.get('untouched')}\n"
-      f"{'Unknown:':13}{int_value.get('unknown')}\n"
-      f"{'Total:':13}{int_value.get('total')}".expandtabs(1))
+print(
+	f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
+	f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"
+	f"{'HIDDEN:':13}{int_value.get('hidden')}\n\t{'☶  File:':12}{int_value.get('hidden_file')}\n"
+	f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n\n"
+	f"{'Untouched:':13}{int_value.get('untouched')}\n"
+	f"{'Unknown:':13}{int_value.get('unknown')}\n"
+	f"{'Total:':13}{int_value.get('total')}".expandtabs(1)
+)
