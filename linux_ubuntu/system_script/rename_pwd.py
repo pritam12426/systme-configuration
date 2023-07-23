@@ -114,8 +114,9 @@ if ".git" in all_file:
 		print("\n")
 
 for i in new_name.keys():
+	# maximum: int = get_max_len(keys_new_name)
 	os.rename(i, new_name.get(i))
-	# print(f"{i} 🠪 {new_name.get(i)}")
+	# print(f"  ● {i:{maximum}} 🠪 {new_name.get(i)}")
 
 print(
 	f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"

@@ -33,7 +33,7 @@ export EDITOR='nvim'
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -76,14 +76,14 @@ export EDITOR='nvim'
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(
-	# vi-mode #Vim key begind
-	alias    #Costome alias
+	# vi-mode #  Vim key begind
+	alias    #  Costome alias
 	history
-	zsh-you-should-use #if and alise is presetn in the lift for the command this will infome me
+	copypath
+	zsh-you-should-use #  If and alise is presetn in the lift for the command this will infome me
 	zsh-autosuggestions
 	# git
-	)
-
+)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

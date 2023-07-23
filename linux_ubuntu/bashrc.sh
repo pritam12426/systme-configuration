@@ -1,27 +1,15 @@
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/Desktop/programming/system_script:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Desktop/programming/system_script:$PATH"
+source "$HOME/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
-# Alias ---------------------------------------------------
+# aliases ---------------------------------------------------
 alias h="history"
-alias erc="vim ~/.bashrc"
-alias gfind="ls --color=auto -aF | grep"
-alias enc="vim ~/.config/nvim/init.vim"
-alias exiftool_f='exiftool -overwrite_original'
+alias erc="nvim ~/.bashrc"
 alias hc="history -c && cat /dev/null > ~/.bash_history"
-alias rmdes='exiftool -overwrite_original -longdescription="" -description=""'
-alias scrcpy_r='scrcpy -m 1080 --max-fps=60 -r ~/Videos/screencasts/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4'
-
-
-# For change dir()
-alias rdir="cd ~/Desktop/programming/rust/"
-alias cdir="cd ~/Desktop/programming/c_lan/"
-alias gdir="cd ~/Desktop/programming/git_repositories/"
-alias pydir="cd ~/Desktop/programming/python/practic/"
-alias spdir="cd ~/Desktop/programming/system_script/"
 # ----------------------------------------------------------
 
 HISTCONTROL=ignoreboth
-export EDITOR='vim'
+export EDITOR='nvim'
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -126,4 +114,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
