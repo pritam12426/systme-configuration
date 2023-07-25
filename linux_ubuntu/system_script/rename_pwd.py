@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+from sys import argv
 import re  # Regular expression
 
 if os.getcwd() == os.getenv("HOME"):
@@ -93,7 +94,11 @@ def get_dict(_list_of_content: list[str]) -> dict:
 	return _result
 
 
-all_file: list[str] = sorted(os.listdir())
+all_file: list[str] = sorted(argv[1:])
+if len(all_file) == 0:
+	print("No file")
+	exit(1)
+
 new_name: dict = get_dict(all_file)
 int_value: dict = new_name.pop("int_value")
 keys_new_name: list[str] = list(new_name.keys())
@@ -101,7 +106,7 @@ keys_new_name: list[str] = list(new_name.keys())
 if len(keys_new_name) == 0:
 	exit(f"Nothing to change in '{int_value.get('total')}' items.")
 
-if ".git" in all_file:
+if ".git" in os.listdir("."):
 	maximum: int = get_max_len(keys_new_name)
 	print("Sorry! This is a 'git-REPOSITORY'.")
 	print(f" {int_value.get('renamed_file')} files, and {int_value.get('renamed_folder')} folder, will get effected.")
@@ -114,9 +119,7 @@ if ".git" in all_file:
 		print("\n")
 
 for i in new_name.keys():
-	# maximum: int = get_max_len(keys_new_name)
 	os.rename(i, new_name.get(i))
-	# print(f"  ● {i:{maximum}} 🠪 {new_name.get(i)}")
 
 print(
 	f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
