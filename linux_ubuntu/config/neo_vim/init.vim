@@ -27,4 +27,5 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <C-j> :term<CR>
 nnoremap <A-k> :w<CR>:!comp %<CR>
 nnoremap <C-w> :q!<CR>
+nnoremap <C-s> :w<CR>
 
