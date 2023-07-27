@@ -11,7 +11,7 @@ if getpass("*") != "name*":
 import os
 
 import json
-import ffmpeg
+import ffmpeg  # ffmpeg-python
 import datetime
 from subprocess import run
 from random import shuffle, choice

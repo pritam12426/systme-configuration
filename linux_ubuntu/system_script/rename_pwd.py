@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 
 import os
-from sys import argv
 import re  # Regular expression
+from sys import argv
 
 if os.getcwd() == os.getenv("HOME"):
-	exit("This is 'HOME' directory.")
+	print("This is 'HOME' directory.\a")
+	exit(1)
 
 if os.getenv("HOME") not in os.getcwd():
-	exit("This is 'ROOT' directory.")
+	print("This is 'ROOT' directory.\a")
+	exit(1)
 
 
 def get_max_len(file_content: list[str]) -> int:
@@ -97,36 +99,39 @@ def get_dict(_list_of_content: list[str]) -> dict:
 all_file: list[str] = sorted(argv[1:])
 if len(all_file) == 0:
 	print("No file")
-	exit(1)
+	exit(0)
 
 new_name: dict = get_dict(all_file)
 int_value: dict = new_name.pop("int_value")
 keys_new_name: list[str] = list(new_name.keys())
 
 if len(keys_new_name) == 0:
-	exit(f"Nothing to change in '{int_value.get('total')}' items.")
+	print(f"Nothing to change in '{int_value.get('total')}' items.\a")
+	exit(0)
 
 if ".git" in os.listdir("."):
 	maximum: int = get_max_len(keys_new_name)
-	print("Sorry! This is a 'git-REPOSITORY'.")
+	print("Sorry! This is a 'git-REPOSITORY'.\a")
 	print(f" {int_value.get('renamed_file')} files, and {int_value.get('renamed_folder')} folder, will get effected.")
 	for i in keys_new_name:
 		print(f"  ● {i:{maximum}} 🠪 {new_name.get(i)}")
 
 	if input("\nWants to continue? [y/n] ").casefold() != "y":
-		exit("ABORT RENAMING PWD")
+		print("ABORT RENAMING PWD\a")
+		exit(0)
 	else:
 		print("\n")
 
-for i in new_name.keys():
+for i in keys_new_name:
 	os.rename(i, new_name.get(i))
 
-print(
-	f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
-	f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"
-	f"{'HIDDEN:':13}{int_value.get('hidden')}\n\t{'☶  File:':12}{int_value.get('hidden_file')}\n"
-	f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n\n"
-	f"{'Untouched:':13}{int_value.get('untouched')}\n"
-	f"{'Unknown:':13}{int_value.get('unknown')}\n"
-	f"{'Total:':13}{int_value.get('total')}".expandtabs(1)
-)
+if len(all_file) >= 2:
+	print(
+		f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
+		f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"
+		f"{'HIDDEN:':13}{int_value.get('hidden')}\n\t{'☶  File:':12}{int_value.get('hidden_file')}\n"
+		f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n\n"
+		f"{'Untouched:':13}{int_value.get('untouched')}\n"
+		f"{'Unknown:':13}{int_value.get('unknown')}\n"
+		f"{'Total:':13}{int_value.get('total')}".expandtabs(1)
+	)

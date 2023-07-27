@@ -1,56 +1,39 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
-from os import getcwd, listdir
+import os.path
+from os import getcwd, listdir, mkdir
 
 if ".git" not in listdir("."):
-	print("No! This is not a git 'repository'.")
+	print("fatal: not a git repository (or any of the parent directories): .git")
 	exit(1)
 
-from tomllib import load
 from sys import path
 from requests import get, exceptions
+from pyfzf import FzfPrompt  # pip install pyfzf
+
+fzf: FzfPrompt = FzfPrompt('/bin/sk')  # Enter your path of 'fzf' or 'skim'
 
 
-def get_info(toml_data: list[str], fun_type: str) -> list[str]:
-	toml_data: list[str] = sorted(toml_data, key=len)
-	for _index, _i in enumerate(toml_data, start=1):
-		print(f"{_index:0>2} 🠪 {_i}")
-
-	user: str = input(f"\nEnter 'So numbers' for {fun_type} >> ").removesuffix(" ")
-
-	if user != "":
-		new_list: list[str] = []
-		for _i in user.split(" "):
-			try:
-				new_list.append(toml_data[(int(_i) - 1)])
-			except IndexError:
-				print(f"{_i} is out of range.")
-				exit(1)
-	else:
-		new_list: list[str] = ["~"]
+def get_info(_text_content: str) -> list[str]:
+	new_list: list[str] = []
+	for _i in fzf.prompt(_text_content, fzf_options="-m --prompt='Select your LDE and language >> '", delimiter=""):
+		new_list.append(_i.split(" | ", maxsplit=1)[-1])
 
 	return sorted(new_list)
 
 
-with open(path[0] + "/data.toml", "rb") as f:
-	toml_content: dict = load(f)
+with open(path[0] + "/supported_template.txt", "rt") as f:
+	support_template: str = f.read()
 
-url: list[str] = []
+url: list[str] = get_info(support_template)
 
-url.extend(get_info(toml_content.pop("ide"), "IDE"))
-url.extend(get_info(toml_content.pop("language"), "LANGUAGE"))
-
-if url == ["~", "~"]:
-	exit(1)
-
-if "~" in url:
-	url.remove("~")
+if "None" in url or len(url) == 0:
+	exit(0)
 
 try:
-	web_data: str = get(f"https://www.toptal.com/developers/gitignore/api/{','.join(url).lower()}").text
+	web_data: str = get(f"https://www.toptal.com/developers/gitignore/api/{', '.join(url).lower()}").text
 except exceptions.ConnectionError:
-	print("Check your network.")
+	print("Check your network.\a")
 	exit(1)
 
 url: str = ""
@@ -61,5 +44,7 @@ url += "# Some ignore file and folder.\n*temp*\nrubbish/\n"
 
 with open(".gitignore", "a") as f:
 	f.write(url)
+
+mkdir("rubbish") if not os.path.exists("rubbish") else None
 
 print(f"Add '.gitignore' in '{getcwd()}'")
