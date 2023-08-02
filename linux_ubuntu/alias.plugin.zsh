@@ -19,6 +19,8 @@ alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
 alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Videos/screencasts/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
 
 # NNN file manager
-export NNN_OPTS="Hde"
-export NNN_PLUG='o:fzopen;m:nmount;x:!chmod +x $nnn'
+export NNN_OPTS="RdeH"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+export NNN_COLOR="#00ff00"
+export NNN_PLUG='o:fzopen;m:nmount;x:!chmod $@  $nnn'
+export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;g:~/Desktop/programming/git_repositories/;c:~/Desktop/programming/;s:~/Desktop/programming/system_script/;t:~/.local/share/Trash/files;v:~/Videos/courses;"
