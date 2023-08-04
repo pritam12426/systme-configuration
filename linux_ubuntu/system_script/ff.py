@@ -68,7 +68,7 @@ while True:
 			name: str = i.rsplit(".")[0].replace("_", " ")
 			extension: str = i.rsplit(".")[1]
 			if element.casefold() in name.replace("_", " ").casefold():
-				print(f" ● {all_file.index(i):{element_len}} > {all_file[all_file.index(i)]}")
+				print(f" ● {(all_file.index(i) + 1):{element_len}} > {all_file[all_file.index(i)]}")
 		print("=" * number_of_equal)
 		continue
 
@@ -88,7 +88,10 @@ while True:
 		command: str = choice(all_file)
 		element: str = f"● SO/no:  '{(all_file.index(command) + 1)}' > '{command}'"
 		print(element)
-		print("=" * len(element))
+		if len(element) > number_of_equal:
+			print("=" * number_of_equal)
+		else:
+			print("=" * len(element))
 
 	elif user_input.isdigit():
 		user_input: int = int(user_input) - 1
@@ -97,7 +100,7 @@ while True:
 			continue
 
 		else:
-			command: str = all_file[int(user_input)]
+			command: str = all_file[user_input]
 
 	else:
 		print("Invalid input.")

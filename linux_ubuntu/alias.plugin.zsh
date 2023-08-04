@@ -19,7 +19,7 @@ alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
 alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Videos/screencasts/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
 
 # NNN file manager
-export NNN_OPTS="RdeH"
+export NNN_OPTS="Rde"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
 export NNN_PLUG='o:fzopen;m:nmount;x:!chmod $@  $nnn'
