@@ -11,6 +11,7 @@ alias cdir="cd ~/Desktop/programming/c_lan/"
 alias gdir="cd ~/Desktop/programming/git_repositories/"
 alias pydir="cd ~/Desktop/programming/python/practic/"
 alias spdir="cd ~/Desktop/programming/system_script/"
+alias hdir="cd ~/Desktop/programming/html/"
 
 # System scrcpy with out python
 alias gfind="ls --color=auto -aF | grep"

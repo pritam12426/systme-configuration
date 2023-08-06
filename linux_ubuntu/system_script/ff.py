@@ -48,15 +48,6 @@ while True:
 	elif user_input == "":
 		continue
 
-	elif user_input.startswith("rm "):
-		user_input: str = user_input.removeprefix("rm ")
-		if user_input.isdigit() and int(user_input) <= (len(all_file) - 1):
-			if user_input.isdigit():
-				os.remove(all_file[int(user_input)])
-				print(f" ● Deleted '{all_file[int(user_input)]}'.")
-				all_file.remove(all_file[int(user_input)])
-		continue
-
 	elif user_input.startswith("/"):
 		os.system(find_type_system()[0])
 		element: str = user_input.removeprefix("/")
@@ -94,13 +85,13 @@ while True:
 			print("=" * len(element))
 
 	elif user_input.isdigit():
-		user_input: int = int(user_input) - 1
+		user_input: int = int(user_input)
 		if user_input > len(all_file):
 			print(f"'{user_input}' out of ranger.")
 			continue
 
 		else:
-			command: str = all_file[user_input]
+			command: str = all_file[(user_input - 1)]
 
 	else:
 		print("Invalid input.")

@@ -18,6 +18,7 @@
     * bat
     * gitui `terminal application`
     * nnn file manger `with git clone`
+    * nerd font
     * skim `alternate for fzf`
     * android file transfer for mac
     * adb
