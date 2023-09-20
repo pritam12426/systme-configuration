@@ -23,5 +23,7 @@ alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Videos/screencasts/scrcpy_$(dat
 export NNN_OPTS="Rde"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
-export NNN_PLUG='o:fzopen;m:nmount;x:!chmod $@  $nnn'
+export NNN_PLUG='o:fzopen;'
 export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;g:~/Desktop/programming/git_repositories/;c:~/Desktop/programming/;s:~/Desktop/programming/system_script/;t:~/.local/share/Trash/files;v:~/Videos/courses;"
+# set --export NNN_FIFO "/tmp/nnn.fifo"
+

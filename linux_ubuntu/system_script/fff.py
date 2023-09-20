@@ -152,7 +152,7 @@ def play_video(directory_content: list[str], user_input: int) -> str | None:
 		return None
 
 
-directory_path: str = "/home/pritam/.local/share/bin/"
+directory_path: str = "/home/pritam/.Iso/.bin/"
 # directory_path: str = os.getcwd() + "/"
 
 all_file: list[str] = sorted(i for i in os.listdir(directory_path) if i.endswith((".mp4", ".mkv", ".mp3")))

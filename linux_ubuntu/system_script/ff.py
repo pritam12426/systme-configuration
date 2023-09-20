@@ -59,7 +59,7 @@ while True:
 			name: str = i.rsplit(".")[0].replace("_", " ")
 			extension: str = i.rsplit(".")[1]
 			if element.casefold() in name.replace("_", " ").casefold():
-				print(f" ● {(all_file.index(i) + 1):{element_len}} > {all_file[all_file.index(i)]}")
+				print(f" ● {(all_file.index(i) + 1):{element_len}} | {all_file[all_file.index(i)]}")
 		print("=" * number_of_equal)
 		continue
 
@@ -70,7 +70,7 @@ while True:
 		print(" directory contents ".center(number_of_equal, "="))
 
 		for index, i in enumerate(all_file, start=1):
-			print(f"{index:{element_len}}: {i}")
+			print(f"{index:{element_len}} | {i}")
 
 		print("=" * number_of_equal)
 		continue

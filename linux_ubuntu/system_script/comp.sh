@@ -50,15 +50,16 @@ path=$(dirname "$file")
 new_name="${filename//./-}"
 
 # Make bin dir if it is not present.
-if ! [ -d "$path/bin" ]; then
-	mkdir "$path/bin"
+if ! [ -d "$HOME/.user_bin" ]; then
+	mkdir "$HOME/.user_bin"
 fi
 
 # Run command for 'gcc' or 'gpp' according to the file type.
-"$command" "$path/$filename" -o "$path/bin/$new_name.out"
+"$command" "$path/$filename" -o "$HOME/.user_bin/$new_name.out"
 
 if [[ "$?" = 0 ]]; then
-	"$path/bin/$new_name.out"
+	# "$path/bin/$new_name.out"
+	"$HOME/.user_bin/$new_name.out"
 	exit "$?"
 else
 	exit "$?"
