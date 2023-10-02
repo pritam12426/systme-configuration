@@ -12,7 +12,7 @@ if [[ $# -eq 0 ]]; then
 		echo "comp: missing operand"
 		exit 1
 	fi
-	echo -e "|-> Compling '$file' file. <-|\n"
+	# echo -e "\r|-> Compling '$file' file. <-|\r"
 else
 	file="$1"
 fi
@@ -22,9 +22,11 @@ fi
 if [[ "$file" =~ .c$ ]]; then
 	command="/usr/bin/gcc"
 elif [[ "$file" =~ .cpp$ ]]; then
-	command="/usr/bin/cpp"
+	command="/usr/bin/g++"
 elif [[ "$file" =~ .rs$ ]]; then
-	command="/usr/bin/rustc"
+	cargo run 
+	exit "$?"
+	# command="rustc"
 elif [[ "$file" =~ .py$ ]]; then
 	python3 "$file"
 	exit "$?"

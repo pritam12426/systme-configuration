@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
+
 import os.path
 from os import getcwd, listdir, mkdir
 
@@ -17,7 +17,7 @@ fzf: FzfPrompt = FzfPrompt('/bin/sk')  # Enter your path of 'fzf' or 'skim'
 def get_info(_text_content: str) -> list[str]:
 	new_list: list[str] = []
 	for _i in fzf.prompt(_text_content, fzf_options="-m --prompt='Select your LDE and language >> '", delimiter=""):
-		new_list.append(_i.split(" | ", maxsplit=1)[-1])
+		new_list.append(_i.split(" | ", 1)[-1])
 
 	return sorted(new_list)
 
@@ -30,8 +30,9 @@ url: list[str] = get_info(support_template)
 if "None" in url or len(url) == 0:
 	exit(0)
 
+
 try:
-	web_data: str = get(f"https://www.toptal.com/developers/gitignore/api/{', '.join(url).lower()}").text
+	web_data: str = get(f"https://www.toptal.com/developers/gitignore/api/{','.join(url).lower()}").text
 except exceptions.ConnectionError:
 	print("Check your network.\a")
 	exit(1)
@@ -40,11 +41,11 @@ url: str = ""
 
 for i in web_data.split("\n")[3: -2]:
 	url += i + "\n"
-url += "# Some ignore file and folder.\n*temp*\nrubbish/\nbin/\n"
+url += "# Some ignore file and folder.\n*temp*\nrubbish/\nbin/\ntest/\n"
 
-with open(".gitignore", "a") as f:
+with open(".gitignore", "w") as f:
 	f.write(url)
 
-mkdir("rubbish") if not os.path.exists("rubbish") else None
+mkdir("rubbish") if not os.path.exists("rubbish") else ...
 
 print(f"Add '.gitignore' in '{getcwd()}'")

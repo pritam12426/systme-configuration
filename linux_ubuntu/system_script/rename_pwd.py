@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 
 import os
 import re  # Regular expression
@@ -9,9 +8,9 @@ if os.getcwd() == os.getenv("HOME"):
 	print("This is 'HOME' directory.\a")
 	exit(1)
 
-# if os.getenv("HOME") not in os.getcwd():
-# 	print("This is 'ROOT' directory.\a")
-# 	exit(1)
+if(os.getenv("HOME") not in os.getcwd() and "/media" not in os.getcwd()):
+	print("This is 'ROOT' directory.\a")
+	exit(1)
 
 
 def get_max_len(file_content: list[str]) -> int:
