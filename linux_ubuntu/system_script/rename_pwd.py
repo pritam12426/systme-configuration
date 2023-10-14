@@ -96,6 +96,7 @@ def get_dict(_list_of_content: list[str]) -> dict:
 
 
 all_file: list[str] = sorted(argv[1:])
+
 if len(all_file) == 0:
 	print("No file")
 	exit(0)

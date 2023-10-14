@@ -7,7 +7,7 @@ alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # Fro change dir()
 alias rdir="cd ~/Desktop/programming/rust/"
-alias cdir="cd ~/Desktop/programming/c_lan/"
+alias cdir="cd ~/Desktop/programming/c_lang/"
 alias gdir="cd ~/Desktop/programming/git_repositories/"
 alias pydir="cd ~/Desktop/programming/python/practic/"
 alias spdir="cd ~/Desktop/programming/system_script/"
@@ -26,5 +26,4 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
 export NNN_PLUG='o:fzopen;'
 export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;g:~/Desktop/programming/git_repositories/;c:~/Desktop/programming/;s:~/Desktop/programming/system_script/;t:~/.local/share/Trash/files;v:~/Videos/courses;p:/media/pritam/"
-# set --export NNN_FIFO "/tmp/nnn.fifo"
 
