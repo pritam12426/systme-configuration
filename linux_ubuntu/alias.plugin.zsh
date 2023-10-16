@@ -2,7 +2,6 @@
 
 # For neo nvim
 alias erc="nvim ~/.zshrc"
-alias rmdir="rm -rf"
 alias enc="nvim ~/.config/nvim/init.vim" 
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
