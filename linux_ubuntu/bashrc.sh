@@ -6,7 +6,7 @@ source "$HOME/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 alias h="history"
 alias erc="nvim ~/.bashrc"
 alias hc="history -c && cat /dev/null > ~/.bash_history"
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 
 HISTCONTROL=ignoreboth
 export EDITOR='nvim'
