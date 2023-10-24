@@ -4,7 +4,7 @@ source "$HOME/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # aliases ---------------------------------------------------
 alias h="history"
-alias rmdir="rm -rf"
+alias rd="rm -rf"
 alias erc="nvim ~/.bashrc"
 alias hc="history -c && cat /dev/null > ~/.bash_history"
 # -----------------------------------------------------------

@@ -21,6 +21,7 @@
     * nerd font
     * skim `alternate for fzf`
     * android file transfer for mac
+    * wire guad VPN
     * adb
 
 * ### Language

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import os.path
-from os import getcwd, listdir, mkdir
+from os import getcwd, listdir
 
 if ".git" not in listdir("."):
 	print("fatal: not a git repository (or any of the parent directories): .git")
@@ -41,11 +41,9 @@ url: str = ""
 
 for i in web_data.split("\n")[3: -2]:
 	url += i + "\n"
-url += "# Some ignore file and folder.\n*temp*\nrubbish/\nbin/\ntest/\n"
+url += "# Some ignore file and folder.\n*temp*\nbin/\ntest/\n"
 
 with open(".gitignore", "w") as f:
 	f.write(url)
-
-mkdir("rubbish") if not os.path.exists("rubbish") else ...
 
 print(f"Add '.gitignore' in '{getcwd()}'")
