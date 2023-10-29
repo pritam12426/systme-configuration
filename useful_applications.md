@@ -51,3 +51,4 @@
     * Vs code
     * Notion
     * scrcpy
+    * anydesk

@@ -24,7 +24,7 @@ def formate_string(_text: str) -> str:
 	_new_text: str = re.sub(r" +", "_", _new_text)
 	# _new_text: str = re.sub(r'(?<=\b\w)\.(?=\w\b)(?!\.\d)', "_", _new_text)
 
-	for _i in list(r"!#$%&'()*+,-./:;<=>?@[]^_`{|}~"):
+	for _i in list(r"!#$%&'()*,-./:;<=>?@[]^_`{|}~"):
 		if f"_{_i}" in _new_text:
 			_new_text: str = _new_text.replace(f"_{_i}", f"{_i}")
 

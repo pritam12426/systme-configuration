@@ -122,14 +122,14 @@ def list_directory(path: str, length: int) -> None:
 	json_data: dict = read_json_file(path)
 	os.system("clear")
 	print(f"[{'NO'}]{'NAME':^{length}}[{'SIZE':^9}][{'DURATION':^8}][{'PX':^9}]")
-	print("-" * (length + 36))
+	print("-" * (length + 37))
 
 	for index, i in enumerate(json_data.keys()):
 		resolution: str = f"{json_data.get(i).get('width')}x{json_data.get(i).get('height')}"
 		print(
-			f"|{index:>2}|{get_filename(json_data.get(i).get('title'), length):<{length}}|"
+			f"|{index:>3}|{get_filename(json_data.get(i).get('title'), length):<{length}}|"
 			f"{json_data.get(i).get('size'):0<6} MB||{json_data.get(i).get('duration'):<8}||{resolution:->9}|")
-	print("-" * (length + 36))
+	print("-" * (length + 37))
 
 
 def find_video(directory_content: list[str], json_data: dict, length: int, user_input: str) -> None:
@@ -182,12 +182,12 @@ match input("Insert m, u, p >> "):
 				run(["open", directory_path])
 				continue
 			elif user == "ls":
-				list_directory(directory_path, (os.get_terminal_size().columns - 36))
+				list_directory(directory_path, (os.get_terminal_size().columns - 37))
 				continue
 			elif user.startswith("/"):
 				os.system("clear")
 				user = user.removeprefix("/")
-				find_video(all_file, json_info, (os.get_terminal_size().columns - 36), user)
+				find_video(all_file, json_info, (os.get_terminal_size().columns - 37), user)
 				print("-" * os.get_terminal_size().columns)
 				continue
 			elif user.startswith("?"):
