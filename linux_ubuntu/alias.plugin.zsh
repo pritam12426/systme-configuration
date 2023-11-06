@@ -7,7 +7,7 @@ alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # Fro change dir()
 alias rdir="cd ~/Desktop/programming/rust/"
-alias cdir="cd ~/Desktop/programming/c_lang/"
+alias cdir="cd ~/Desktop/programming/c_lang/practic/"
 alias gdir="cd ~/Desktop/programming/git_repositories/"
 alias ddir="cd ~/Downloads/"
 alias pydir="cd ~/Desktop/programming/python/practic/"
