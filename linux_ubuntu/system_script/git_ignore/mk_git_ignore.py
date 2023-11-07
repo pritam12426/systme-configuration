@@ -41,7 +41,7 @@ url: str = ""
 
 for i in web_data.split("\n")[3: -2]:
 	url += i + "\n"
-url += "# Some ignore file and folder.\n*temp*\nbin/\ntest/\n"
+url += "# Some ignore file and folder.\n*temp*\ntest/\n"
 
 with open(".gitignore", "w") as f:
 	f.write(url)

@@ -20,7 +20,8 @@ Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 call plug#end()
 
-:colorscheme jellybeans
+" :colorscheme jellybeans
+:colorscheme atom
 
 " Shortcut keys
 nnoremap <C-b> :NERDTreeToggle<CR>

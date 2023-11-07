@@ -9,24 +9,26 @@
     * bash
         * fill .bashrc
         * fill .zshrc
-    * git gui
+    * git gui `default one`
     * neo vim
     * exiftool
     * ffmpeg
-    * youtube-dl
+    * yt-dlp
     * pandoc
     * bat
     * gitui `terminal application`
     * nnn file manger `with git clone`
     * nerd font
     * skim `alternate for fzf`
-    * android file transfer for mac
     * wire guad VPN
     * adb
-
+        * android file transfer for mac
+    * cmake
+        * ccmake
 * ### Language
     * Python
-    * gcc
+    * c
+    * c++
     * rust
     * pip
         * env for `data sic and machin leraning`
@@ -48,7 +50,7 @@
     * Whatsapp
     * DaVinci Resolve
     * office 365 `account login`
+    * xcode
     * Vs code
-    * Notion
     * scrcpy
     * anydesk
