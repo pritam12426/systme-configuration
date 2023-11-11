@@ -9,6 +9,7 @@
 :set smarttab
 :set softtabstop=4
 :set nowrap
+" :set guicursor=n-v-c-i:block
 " :set mouse=a
 
 call plug#begin() 
@@ -22,12 +23,14 @@ call plug#end()
 
 " :colorscheme jellybeans
 :colorscheme atom
+" :colorscheme murphy
 
 " Shortcut keys
 nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <C-j> :term<CR>
 nnoremap <A-k> :w<CR>:!comp %<CR>
-nnoremap <C-w> :q!<CR>
 nnoremap <C-s> :w<CR>
+nnoremap <C-d> :q!<CR>
+nnoremap <C-w> :x<CR>
 nnoremap <A-z> :set wrap<CR>
 

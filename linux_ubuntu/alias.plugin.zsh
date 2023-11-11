@@ -2,7 +2,8 @@
 
 # For neo nvim
 alias erc="nvim ~/.zshrc"
-alias enc="nvim ~/.config/nvim/init.vim" 
+alias enrc="nvim ~/.config/nvim/init.vim" 
+alias evrc="sudo vim /etc/vim/vimrc" 
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # Fro change dir()
@@ -15,7 +16,7 @@ alias spdir="cd ~/Desktop/programming/system_script/"
 alias hdir="cd ~/Desktop/programming/html/"
 
 # System scrcpy with out python
-alias gfind="ls --color=auto -aF | grep"
+alias gfind="ls --color=auto -aC | grep"
 alias rmt7="sudo umount /media/pritam/T7"
 alias exiftool_f="exiftool -overwrite_original"
 alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
@@ -27,6 +28,20 @@ alias githubconfig="git config user.naem 'Pritam' && git config user.email '8472
 export NNN_OPTS="Rde"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
-export NNN_PLUG='o:fzopen;'
-export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;g:~/Desktop/programming/git_repositories/;c:~/Desktop/programming/;s:~/Desktop/programming/system_script/;t:~/.local/share/Trash/files;v:~/Videos/courses;p:/media/pritam/"
+export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;c:~/Desktop/programming/;t:~/.local/share/Trash/files;p:/media/pritam/"
 
+f (){
+  dir=.
+
+  findparms=(-name '*.mp3' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv')
+
+  (find "$dir" -maxdepth 1 "${findparms[@]}" | sort | sed "s%${dir}/%%") \
+     | sk | {
+         while IFS='' read -r f; do
+             plist=("${dir}/${f}")
+         done
+
+         ffplay -loop -1 "${plist[@]}"
+         # echo "${plist[@]}"
+  }
+}
