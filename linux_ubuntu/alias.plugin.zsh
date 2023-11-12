@@ -16,7 +16,9 @@ alias spdir="cd ~/Desktop/programming/system_script/"
 alias hdir="cd ~/Desktop/programming/html/"
 
 # System scrcpy with out python
-alias gfind="ls --color=auto -aC | grep"
+alias gfind="ls --color=auto -aF| grep"
+alias vi="nvim "
+alias tree="tre -ae "
 alias rmt7="sudo umount /media/pritam/T7"
 alias exiftool_f="exiftool -overwrite_original"
 alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
@@ -29,19 +31,3 @@ export NNN_OPTS="Rde"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
 export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;c:~/Desktop/programming/;t:~/.local/share/Trash/files;p:/media/pritam/"
-
-f (){
-  dir=.
-
-  findparms=(-name '*.mp3' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv')
-
-  (find "$dir" -maxdepth 1 "${findparms[@]}" | sort | sed "s%${dir}/%%") \
-     | sk | {
-         while IFS='' read -r f; do
-             plist=("${dir}/${f}")
-         done
-
-         ffplay -loop -1 "${plist[@]}"
-         # echo "${plist[@]}"
-  }
-}

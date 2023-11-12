@@ -3,9 +3,10 @@
     * git `--update`
         * git config --global user.name && user.email
         * SSH for github
-    * oh-my-zsh
-        * fill .zshrc
-        * `auto suggestion` and `you should use`
+    * oh-my-zsh `just change the address of pwd in default zsh `
+		* fill .zshrc
+		* `auto suggestion` and `you should use`
+
     * bash
         * fill .bashrc
         * fill .zshrc
@@ -15,6 +16,7 @@
     * ffmpeg
     * yt-dlp
     * pandoc
+    * tre `alternate for tree command` ~ `https://github.com/dduan/tre`
     * bat
     * gitui `terminal application`
     * nnn file manger `with git clone`
@@ -30,6 +32,7 @@
     * c
     * c++
     * rust
+    * jdk `java dev tool`
     * pip
         * env for `data sic and machin leraning`
 * ### GUI apps

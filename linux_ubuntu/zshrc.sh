@@ -10,8 +10,14 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="alanpeabodyt"
+# theme ------
+# PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
+
+PROMPT="%B%F{magenta}%n@%m%f%b: { %F{cyan}%B%U%~%u%b%f } $ "
+RPROMPT="~ %F{241}%t%f"
+
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="user_theme"
 
 export EDITOR='nvim'
 # Set list of themes to pick from when loading at random
@@ -76,7 +82,6 @@ zstyle ':omz:update' frequency 13
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(
-	# vi-mode #  Vim key begind
 	alias    #  Costome alias
 	history
 	copypath
