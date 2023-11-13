@@ -4,7 +4,7 @@
 dir="."
 findparms=(-name '*.mp3' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv')
 (find "$dir" -maxdepth 1 "${findparms[@]}" | sort | sed "s%${dir}/%%") \
- | sk | {
+ | sk --color=current_bg:232,info:32 | {
 	 while IFS='' read -r f; do
 		 plist=("${dir}/${f}")
 		 extension="${f##*.}"

@@ -31,6 +31,6 @@ export NNN_OPTS="Rde"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
 export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;c:~/Desktop/programming/;t:~/.local/share/Trash/files;p:/media/pritam/"
+export SK_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
-#Some fuction:
 alias song="ffplay -fs -ss 6741 ~/Videos/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
