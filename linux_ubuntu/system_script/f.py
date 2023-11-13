@@ -10,13 +10,15 @@ findparms=(-name '*.mp3' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -
 		 extension="${f##*.}"
 	 done
 		 if [ "$extension" == "mp3" ] || [ "$extension" == "m4a" ] || [ "$extension" == "m4a" ]; then
+			 echo "Runing ffplay ..."
 			 # ffplay -nodisp -loop -1 "${plist[@]}" >/dev/null 2>&1
 			 ffplay -loop -1 "${plist[@]}" >/dev/null 2>&1
 		 elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ]; then
+			 echo "Runing ffplay ..."
 			 ffplay -fs -loop -1 "${plist[@]}" >/dev/null 2>&1
 			 # ffplay -fs -loop -1 "${plist[@]}"
-		 else
-			 echo "Unsupported file extension: $extension"
+		 # else
+			 # echo "Unsupported file extension: $extension"
 		 fi
 }
 
