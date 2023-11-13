@@ -33,3 +33,4 @@ export NNN_COLOR="#00ff00"
 export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;c:~/Desktop/programming/;t:~/.local/share/Trash/files;p:/media/pritam/"
 
 #Some fuction:
+alias song="ffplay -fs -ss 6741 ~/Videos/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
