@@ -1,8 +1,16 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <stdio.h>
 #include <sys/stat.h>
+
+
+bool is_char_in(char *_content, char _what){
+	for(int i = 0; ((_content[i]) != '\0'); i++){
+		if(_content[i] == _what) return true;
+	}
+	return false;
+}
 
 
 bool str_ends_with(char *_content, char *_ends){
