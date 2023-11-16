@@ -305,3 +305,4 @@ pyrightconfig.json
 # Some ignore file and folder.
 *temp*
 rubbish/
+*.out
