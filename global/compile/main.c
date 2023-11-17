@@ -39,13 +39,30 @@ int main(int argc, char *argv[]) {
 		return system(_command);
 	}
 
+	char path_separator;
+	char *file_extension;
+
+	#ifdef linux
+		path_separator = '/';
+		file_extension = ".out";
+	#elif __APPLE__
+		path_separator = '/';
+		file_extension = ".out";
+	#elif __WIN32
+		path_separator = '\\';
+		file_extension = ".exe";
+	#else
+		printf("\033[1;31mUNSUPPORTED SYSTEM\033[0m:(\n");
+		return 1;
+	#endif
+
 	char *file_name;
 
-	if(strrchr(argv[1], '/') != NULL){
-		file_name = strrchr(argv[1], '/');
+	if(strrchr(argv[1], path_separator) != NULL){
+		file_name = strrchr(argv[1], path_separator) + 1;
 	}
 	else {
-		file_name = &argv[1][0];
+		file_name = (&argv[1][0]);
 	}
 
 	short int len_file_name = strlen(file_name) + 1;
@@ -75,14 +92,10 @@ int main(int argc, char *argv[]) {
 	ch_str_replace(actual_file_name, '.', '-');
 
 	if(str_ends_with(argv[1], ".c")){
-		sprintf(_command, "gcc %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, ".out");
-		printf("%s\n", _command);
-		return_value = system(_command);
+		sprintf(_command, "gcc %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
 	}
 	else if(str_ends_with(argv[1], ".cpp")){
-		sprintf(_command, "gpp %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, ".out");
-		printf("%s\n", _command);
-		return_value = system(_command);
+		sprintf(_command, "g++ %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
 		
 	}
 	else{
@@ -90,10 +103,13 @@ int main(int argc, char *argv[]) {
 		return 2;
 	}
 
+	printf("\033[1;35mTRYING TO COMPILE:\033[0m { \033[1;36m%s\033[0m }\n", _command);
+	return_value = system(_command);
+
 	if(return_value == 0){
 		char another_command[len_temp_dir + len_file_name];
-		sprintf(another_command, "%s%s.out", temp_dir, actual_file_name );
-		printf("%s\n\n", another_command);
+		sprintf(another_command, "%s%s%s", temp_dir, actual_file_name, file_extension);
+		printf("\033[1;35mRUNNING:\033[0m { \033[1;36m%s\033[0m }\n", another_command);
 		return_value = system(another_command);
 	}
 
