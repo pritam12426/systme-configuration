@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 
 	struct stat st;
 	if(stat(argv[1], &st) != 0){
-		printf("{ %s } file not found\n", argv[1]);
+		printf("\033[1;31mFILE NOT FOUND\033[0m: { \033[1;36m%s\033[0m }\n", argv[1]);
 		return 1;
 	}
 
@@ -60,7 +60,18 @@ int main(int argc, char *argv[]) {
 
 	if(str_ends_with(argv[1], ".py")){
 		char _command[af_path_len + 9];
-		sprintf(_command, "%s %s", "python3", argv[1]);
+
+		#ifdef linux
+			sprintf(_command, "%s %s", "python3", argv[1]);
+		#elif __APPLE__
+			sprintf(_command, "%s %s", "python3", argv[1]);
+		#elif __WIN32
+			sprintf(_command, "%s %s", "python", argv[1]);
+		#else
+			printf("\033[1;31mUNSUPPORTED SYSTEM\033[0m:(\n");
+			return 1;
+		#endif
+
 		return system(_command);
 	}
 
@@ -86,7 +97,7 @@ int main(int argc, char *argv[]) {
 		
 	}
 	else{
-		printf("Unsupported file type { %s }.\n", file_name);
+		printf("\033[1;31mUNSUPPORTED FILE TYPE\033[0m: { \033[1;36m%s\033[0m }.\n", file_name);
 		return 2;
 	}
 
