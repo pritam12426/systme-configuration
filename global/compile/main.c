@@ -58,11 +58,11 @@ int main(int argc, char *argv[]) {
 
 	char *file_name;
 
-	if(strrchr(argv[1], path_separator) != NULL){
-		file_name = strrchr(argv[1], path_separator) + 1;
+	if((file_name = strrchr(argv[1], path_separator)) == NULL) {
+		file_name = (&argv[1][0]);
 	}
 	else {
-		file_name = (&argv[1][0]);
+		file_name++;
 	}
 
 	short int len_file_name = strlen(file_name) + 1;
@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
 	if(return_value == 0){
 		char another_command[len_temp_dir + len_file_name];
 		sprintf(another_command, "%s%s%s", temp_dir, actual_file_name, file_extension);
-		printf("\033[1;35mRUNNING:\033[0m { \033[1;36m%s\033[0m }\n", another_command);
+		printf("\033[1;35mRUNNING:\033[0m { \033[1;36m%s\033[0m }\n\n", another_command);
 		return_value = system(another_command);
 	}
 
@@ -131,7 +131,7 @@ void ch_str_replace(char *_content, const char _which, const char _what){
 		if(_content[_len] == _which){
 			_content[_len] = _what;
 			break;
-		} 
+		}
 	}
 }
 
