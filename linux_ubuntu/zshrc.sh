@@ -17,7 +17,7 @@ PROMPT="%B%F{magenta}%n@%m%f%b: { %F{cyan}%B%U%~%u%b%f } 🔪"$'\n'" $ "
 RPROMPT="~ %F{241}%t%f"
 
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="user_theme"
+# # ZSH_THEME="user_theme"
 
 export EDITOR='nvim'
 # Set list of themes to pick from when loading at random

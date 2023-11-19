@@ -14,6 +14,7 @@ alias ddir="cd ~/Downloads/"
 alias pydir="cd ~/Desktop/programming/python/practic/"
 alias spdir="cd ~/Desktop/programming/system_script/"
 alias hdir="cd ~/Desktop/programming/html/"
+alias tdir="cd /media/pritam/T7/main"
 
 # System scrcpy with out python
 alias gfind="ls --color=auto -aF| grep"

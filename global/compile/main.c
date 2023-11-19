@@ -84,9 +84,9 @@ int main(int argc, char *argv[]) {
 		return 1;
 	#endif
 
-	short len_temp_dir = strlen(temp_dir);
+	short int len_temp_dir = strlen(temp_dir);
 
-	char _command[len_argv + len_file_name + len_temp_dir + 14];
+	char _command[len_argv + len_file_name + len_temp_dir + 18];
 
 	ch_str_lower(actual_file_name);
 	ch_str_replace(actual_file_name, '.', '-');
@@ -96,7 +96,9 @@ int main(int argc, char *argv[]) {
 	}
 	else if(str_ends_with(argv[1], ".cpp")){
 		sprintf(_command, "g++ %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
-		
+	}
+	else if(str_ends_with(argv[1], ".rs")){
+		sprintf(_command, "rustc %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
 	}
 	else{
 		printf("\033[1;31mUNSUPPORTED FILE TYPE\033[0m: { \033[1;36m%s\033[0m }.\n", file_name);
@@ -109,7 +111,7 @@ int main(int argc, char *argv[]) {
 	if(return_value == 0){
 		char another_command[len_temp_dir + len_file_name];
 		sprintf(another_command, "%s%s%s", temp_dir, actual_file_name, file_extension);
-		printf("\033[1;35mRUNNING:\033[0m { \033[1;36m%s\033[0m }\n\n", another_command);
+		printf("\033[1;35mRUNNING:\033[0m { \033[1;36m%s\033[0m }\n", another_command);
 		return_value = system(another_command);
 	}
 
