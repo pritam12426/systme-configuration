@@ -100,6 +100,9 @@ int main(int argc, char *argv[]) {
 	else if(str_ends_with(argv[1], ".rs")){
 		sprintf(_command, "rustc %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
 	}
+	else if(str_ends_with(argv[1], ".java")){
+		sprintf(_command, "javac %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
+	}
 	else{
 		printf("\033[1;31mUNSUPPORTED FILE TYPE\033[0m: { \033[1;36m%s\033[0m }.\n", file_name);
 		return 2;
