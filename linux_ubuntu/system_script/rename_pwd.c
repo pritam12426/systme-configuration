@@ -10,8 +10,8 @@
 char *is_file(char *_path);
 void ch_str_lower(char *_content);
 char *get_working_dir(char *_first_name);
-void formate_string(char *_content, char *_replacer);
-void ch_str_replace(char *_content, const char _which, const char _what);
+int max_length(char **dir_content, int len);
+void formate_string(char *_content, const char *_replacers, const char _with);
 
 
 int main(int argc, char *argv[]) {
@@ -38,28 +38,13 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-	int max = 0;
-	for(int i = 1; i < argc; i++){
-		int _max = strlen(argv[i]);
-
-		if(max < _max){
-			max = _max;
-		}
-	}
+	int max = max_length(argv, argc);
 
 	struct stat st;
 
 	for(int i = 1; i < argc; i++){
 		char new_name[max];
 		strcpy(new_name, argv[i]);
-		char *file_name;
-
-		if((file_name = strrchr(new_name, '/')) == NULL){
-			file_name = &(new_name[0]);
-		}
-		else {
-			file_name++;
-		}
 
 		stat(argv[i], &st);
 
@@ -73,36 +58,80 @@ int main(int argc, char *argv[]) {
 			printf("Error\n");
 		}
 
-		formate_string(file_name, " ");
 	}
 
 	return 0;
 }
 
 
-void formate_string(char *_content, char *_replacer){
-	for(int i = 0; ((_replacer[i]) != '\0'); i++){
-		ch_str_replace(_content, _replacer[i], '_');
+void formate_string(char *_content, const char *_replacers, const char _with) {
+	char *file_name;
+
+	if((file_name = strrchr(_content, '/')) == NULL){
+		file_name = &(_content[0]);
 	}
-	ch_str_lower(_content);
+	else {
+		file_name++;
+	}
+
+	for(int i = 0; ((file_name[i]) != '\0'); i++){
+		file_name[i] = tolower(file_name[i]);
+		if(file_name[i] == ' '){
+			file_name[i] = '_';
+		}
+	}
+
+	for(int i = 0; ((_replacers[i]) != '\0'); i++){
+		for(int j = 0; ((file_name[j]) != '\0'); j++){
+			if(file_name[j] == _replacers[i]){
+				file_name[j] = _with;
+			}
+		}
+	}
+
+	short int founded = 0;
+
+	for(int i = 0; ((file_name[i]) != '\0'); i++){
+		if(file_name[i] == _with){
+			founded++;
+		}
+	}
+
+	short int len = strlen(file_name);
+
+	for(int _ = 0; _ < founded; _++){
+		for(int i = 0; ((file_name[i]) != '\0'); i++){
+			if(file_name[i] == _with){
+				for(i; i < (len + 1); i++){
+					file_name[i] = file_name[(i + 1)];
+				}
+			}
+		}
+	}
+}
+
+
+int max_length(char **dir_content, int len){
+	int max = 0;
+	for(int i = 1; i < len; i++){
+		int _max = strlen(dir_content[i]);
+
+		if(max < _max){
+			max = _max;
+		}
+	}
+
+	return max;
 }
 
 
 void ch_str_lower(char *_content){
 	int i = 0;
+
 	for(i; ((_content[i]) != '\0'); i++){
 		_content[i] = tolower(_content[i]);
 	}
 	_content[i] = '\0';
-}
-
-
-void ch_str_replace(char *_content, const char _which, const char _what){
-	for(int i = 0; ((_content[i]) != '\0'); i++){
-		if(_content[i] == _which){
-			_content[i] = _what;
-		} 
-	}
 }
 
 
