@@ -7,21 +7,17 @@
 #include <sys/stat.h>
 
 
-char *is_file(char *_path);
-void ch_str_lower(char *_content);
+char *rename_file(char *_path);
 char *get_working_dir(char *_first_name);
-int max_length(char **dir_content, int len);
-void formate_string(char *_content, const char *_replacers, const char _with);
+int  max_length(char **dir_content, int len);
+void formate_string(char *_content, const char *_replacers);
 
 
 int main(int argc, char *argv[]) {
 	if(argc <= 1) return 1;
 
 	char *tool_name;
-	if(strrchr(argv[0], '/') != NULL){
-		tool_name = strrchr(argv[0], '/');
-	}
-	else {
+	if((tool_name = strrchr(argv[0], '/')) == NULL){
 		tool_name = &(argv[0][0]);
 	}
 
@@ -41,30 +37,34 @@ int main(int argc, char *argv[]) {
 	int max = max_length(argv, argc);
 
 	struct stat st;
+	char new_name[max];
 
 	for(int i = 1; i < argc; i++){
-		char new_name[max];
 		strcpy(new_name, argv[i]);
-
 		stat(argv[i], &st);
 
 		if(S_ISREG(st.st_mode)){
+			/*This check will encounter when passed path is a file.*/
+			if(rename_file(new_name) == NULL){
+				continue;
+			}
+
+			rename_file(new_name);
 			printf("%d >> file { \033[1;32m%s\033[0m }-{ \033[1;31m%s\033[0m } \n", i, argv[i], new_name);
 		}
 		else if(S_ISDIR(st.st_mode)){
+			/*This check will encounter when passed path is a folder || dir.*/
+			formate_string(new_name, "-");
 			printf("%d >> dir { \033[1;32m%s\033[0m }-{ \033[1;31m%s\033[0m } \n", i, argv[i], new_name);
 		}
-		else {
-			printf("Error\n");
-		}
-
 	}
 
 	return 0;
 }
 
 
-void formate_string(char *_content, const char *_replacers, const char _with) {
+void formate_string(char *_content, const char *_replacers) {
+	/*FORMATE STRING: will formate the string in such way in no.*/
 	char *file_name;
 
 	if((file_name = strrchr(_content, '/')) == NULL){
@@ -74,26 +74,23 @@ void formate_string(char *_content, const char *_replacers, const char _with) {
 		file_name++;
 	}
 
-	for(int i = 0; ((file_name[i]) != '\0'); i++){
-		file_name[i] = tolower(file_name[i]);
-		if(file_name[i] == ' '){
-			file_name[i] = '_';
-		}
-	}
+	short int founded = 0;
 
 	for(int i = 0; ((_replacers[i]) != '\0'); i++){
 		for(int j = 0; ((file_name[j]) != '\0'); j++){
+
 			if(file_name[j] == _replacers[i]){
-				file_name[j] = _with;
+				founded++;
+				file_name[j] = '^';
 			}
 		}
 	}
 
-	short int founded = 0;
-
 	for(int i = 0; ((file_name[i]) != '\0'); i++){
-		if(file_name[i] == _with){
-			founded++;
+		file_name[i] = tolower(file_name[i]);
+
+		if(file_name[i] == ' '){
+			file_name[i] = '_';
 		}
 	}
 
@@ -101,7 +98,8 @@ void formate_string(char *_content, const char *_replacers, const char _with) {
 
 	for(int _ = 0; _ < founded; _++){
 		for(int i = 0; ((file_name[i]) != '\0'); i++){
-			if(file_name[i] == _with){
+
+			if(file_name[i] == '^'){
 				for(i; i < (len + 1); i++){
 					file_name[i] = file_name[(i + 1)];
 				}
@@ -112,7 +110,9 @@ void formate_string(char *_content, const char *_replacers, const char _with) {
 
 
 int max_length(char **dir_content, int len){
+	/*MAX_LENGTH: Will return the length of the largest string of 3d char array.*/
 	int max = 0;
+
 	for(int i = 1; i < len; i++){
 		int _max = strlen(dir_content[i]);
 
@@ -125,17 +125,8 @@ int max_length(char **dir_content, int len){
 }
 
 
-void ch_str_lower(char *_content){
-	int i = 0;
-
-	for(i; ((_content[i]) != '\0'); i++){
-		_content[i] = tolower(_content[i]);
-	}
-	_content[i] = '\0';
-}
-
-
 char *get_working_dir(char *_first_name){
+	/*GET_WORKING_DIR: Will return the pointer to a CHAR of the dir of your file.*/
 	static char *PWD;
 	static char another[250];
 
@@ -151,6 +142,16 @@ char *get_working_dir(char *_first_name){
 	return PWD;
 }
 
-char *is_file(char *_path) {
-	//  TODO: Add a function for testing wether passed path is file of folder :)
+
+char *rename_file(char *_path) {
+	char *file_extension;
+
+	if((file_extension = strrchr(_path, '.')) == NULL){
+		return NULL;
+	}
+	else {
+		*file_extension++ = '\0';
+	}
+	formate_string(_path, ".");
+	sprintf(_path, "%s.%s", _path, file_extension);
 }
