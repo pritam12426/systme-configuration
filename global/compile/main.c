@@ -1,3 +1,4 @@
+#include <time.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -8,6 +9,7 @@
 
 void ch_str_lower(char *_content);
 bool str_ends_with(char *_content, char *_ends);
+void run(time_t _old_time, char *_command, int *_return_value);
 void ch_str_replace(char *_content, const char _which, const char _what);
 
 
@@ -15,14 +17,14 @@ int main(int argc, char *argv[]) {
 	if(argc != 2) return 2;
 
 	struct stat st;
-	if(stat(argv[1], &st) != 0){
+	if(stat(argv[1], &st) != false) {
 		printf("\033[1;31mFILE NOT FOUND\033[0m: { \033[1;36m%s\033[0m }\n", argv[1]);
 		return 1;
 	}
 
 	short int len_argv = (strlen(argv[1]) + 1);
 
-	if(str_ends_with(argv[1], ".py")){
+	if(str_ends_with(argv[1], ".py")) {
 		char _command[len_argv + 9];
 
 		#ifdef linux
@@ -36,6 +38,11 @@ int main(int argc, char *argv[]) {
 			return 1;
 		#endif
 
+		return system(_command);
+	}
+	else if(str_ends_with(argv[1], ".js")) {
+		char _command[len_argv + 9];
+		sprintf(_command, "%s %s", "node", argv[1]);
 		return system(_command);
 	}
 
@@ -59,7 +66,7 @@ int main(int argc, char *argv[]) {
 	char *file_name;
 
 	if((file_name = strrchr(argv[1], path_separator)) == NULL) {
-		file_name = (&argv[1][0]);
+		file_name = &(argv[1][0]);
 	}
 	else {
 		file_name++;
@@ -102,19 +109,20 @@ int main(int argc, char *argv[]) {
 	}
 	else if(str_ends_with(argv[1], ".java")){
 		sprintf(_command, "javac %s %s %s%s%s", argv[1], "-o", temp_dir, actual_file_name, file_extension);
+		// TODO: Write the logic for compiling the '.java' files :)..
 	}
 	else{
 		printf("\033[1;31mUNSUPPORTED FILE TYPE\033[0m: { \033[1;36m%s\033[0m }.\n", file_name);
 		return 2;
 	}
 
-	printf("\033[1;35mTRYING TO COMPILE:\033[0m { \033[1;36m%s\033[0m }\n", _command);
+	printf("[\033[1;35mTRYING TO COMPILE\033[0m] { \033[1;36m%s\033[0m }\n", _command);
 	return_value = system(_command);
 
-	if(return_value == 0){
+	if(return_value == 0) {
 		char another_command[len_temp_dir + len_file_name];
 		sprintf(another_command, "%s%s%s", temp_dir, actual_file_name, file_extension);
-		printf("\033[1;35mRUNNING:\033[0m { \033[1;36m%s\033[0m }\n", another_command);
+		printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", another_command);
 		return_value = system(another_command);
 	}
 
@@ -122,17 +130,27 @@ int main(int argc, char *argv[]) {
 }
 
 
-void ch_str_lower(char *_content){
+void run(time_t _old_time, char *_command, int *_return_value){
+	printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", _command);
+	*_return_value = system(_command);
+
+	if(_return_value == 0){
+		printf("[\033[1;35mDONE\033[0m] { \033[1;36m%s\033[0m }\n", _command);
+	}
+}
+
+
+void ch_str_lower(char *_content) {
 	for(int i = 0; ((_content[i]) != '\0'); i++){
 		_content[i] = tolower(_content[i]);
 	}
 }
 
 
-void ch_str_replace(char *_content, const char _which, const char _what){
+void ch_str_replace(char *_content, const char _which, const char _what) {
 	int _len = strlen(_content);
 
-	for(_len; _len; _len--){
+	for(_len; _len; _len--) {
 		if(_content[_len] == _which){
 			_content[_len] = _what;
 			break;
@@ -141,15 +159,15 @@ void ch_str_replace(char *_content, const char _which, const char _what){
 }
 
 
-bool str_ends_with(char *_content, char *_ends){
+bool str_ends_with(char *_content, char *_ends) {
 	int _len_ends = strlen(_ends);
 	int _len_content = strlen(_content);
 
-	if(_len_ends > _len_content){
+	if(_len_ends > _len_content) {
 		return false;
 	}
 
-	for(int i = 0; i < _len_ends; i++){
+	for(int i = 0; i < _len_ends; i++) {
 		if(_content[(_len_content - i - 1)] != _ends[(_len_ends - i - 1)]){
 			return false;
 		}
