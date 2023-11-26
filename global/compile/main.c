@@ -9,7 +9,7 @@
 
 void ch_str_lower(char *_content);
 bool str_ends_with(char *_content, char *_ends);
-void run(time_t _old_time, char *_command, int *_return_value);
+void run(time_t _old_time, char *_command, short int *_return_value, short int _type);
 void ch_str_replace(char *_content, const char _which, const char _what);
 
 
@@ -22,6 +22,8 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+	time_t old = clock();
+	short int return_value = 0;
 	short int len_argv = (strlen(argv[1]) + 1);
 
 	if(str_ends_with(argv[1], ".py")) {
@@ -38,14 +40,17 @@ int main(int argc, char *argv[]) {
 			return 1;
 		#endif
 
-		return system(_command);
+		run(old, _command, &return_value, 1);
+		return return_value;
 	}
 	else if(str_ends_with(argv[1], ".js")) {
 		char _command[len_argv + 9];
 		sprintf(_command, "%s %s", "node", argv[1]);
-		return system(_command);
+		run(old, _command, &return_value, 1);
+		return return_value;
 	}
 
+	return_value = -1;
 	char path_separator;
 	char *file_extension;
 
@@ -76,8 +81,6 @@ int main(int argc, char *argv[]) {
 	char actual_file_name[len_file_name];
 	strcpy(actual_file_name, file_name);
 
-	short int return_value = -1;
-
 	char *temp_dir;
 
 	#ifdef linux
@@ -92,7 +95,6 @@ int main(int argc, char *argv[]) {
 	#endif
 
 	short int len_temp_dir = strlen(temp_dir);
-
 	char _command[len_argv + len_file_name + len_temp_dir + 18];
 
 	ch_str_lower(actual_file_name);
@@ -123,19 +125,33 @@ int main(int argc, char *argv[]) {
 		char another_command[len_temp_dir + len_file_name];
 		sprintf(another_command, "%s%s%s", temp_dir, actual_file_name, file_extension);
 		printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", another_command);
-		return_value = system(another_command);
+		run(old, another_command, &return_value, 2);
 	}
 
 	return return_value;
 }
 
 
-void run(time_t _old_time, char *_command, int *_return_value){
-	printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", _command);
-	*_return_value = system(_command);
-
-	if(_return_value == 0){
-		printf("[\033[1;35mDONE\033[0m] { \033[1;36m%s\033[0m }\n", _command);
+void run(time_t _old_time, char *_command, short int *_return_value, short int _type){
+	if(_type == 1){
+		/* This check will encounter when the file type is (.py, .js) */
+		*_return_value = system(_command);
+		if(*_return_value == 0){
+			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", difftime(clock(), _old_time));
+		}
+		else {
+			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, difftime(clock(), _old_time));
+		}
+	}
+	else if(_type == 2){
+		/* This check will encounter when the file type is (.js, .rs, .c, .cpp) */
+		if(*_return_value == 0){
+			*_return_value = system(_command);
+			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", difftime(clock(), _old_time));
+		}
+		else {
+			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, difftime(clock(), _old_time));
+		}
 	}
 }
 
