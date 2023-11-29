@@ -137,20 +137,20 @@ void run(time_t _old_time, char *_command, short int *_return_value, short int _
 		/* This check will encounter when the file type is (.py, .js) */
 		*_return_value = system(_command);
 		if(*_return_value == 0){
-			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", difftime(clock(), _old_time));
+			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%f\033[0m seconds)\n", ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 		else {
-			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, difftime(clock(), _old_time));
+			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 	}
 	else if(_type == 2){
 		/* This check will encounter when the file type is (.js, .rs, .c, .cpp) */
 		if(*_return_value == 0){
 			*_return_value = system(_command);
-			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", difftime(clock(), _old_time));
+			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%f\033[0m seconds)\n", ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 		else {
-			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, difftime(clock(), _old_time));
+			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 	}
 }

@@ -32,6 +32,7 @@
     * c
     * c++
     * rust
+    * node js
     * jdk `java dev tool`
     * pip
         * env for `data sic and machin leraning`
@@ -55,6 +56,7 @@
     * office 365 `account login`
     * xcode
     * Vs code
+    * google drive
     * scrcpy
     * anydesk
     * fusion 360

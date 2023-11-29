@@ -2,36 +2,36 @@
 
 # For neo nvim
 alias erc="nvim ~/.zshrc"
-alias enrc="nvim ~/.config/nvim/init.vim" 
 alias evrc="sudo vim /etc/vim/vimrc" 
+alias enrc="nvim ~/.config/nvim/init.vim" 
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # Fro change dir()
-alias rdir="cd ~/Desktop/programming/rust/"
-alias cdir="cd ~/Desktop/programming/c_lang/practic/"
-alias gdir="cd ~/Desktop/programming/git_repositories/"
 alias ddir="cd ~/Downloads/"
-alias pydir="cd ~/Desktop/programming/python/practic/"
-alias spdir="cd ~/Desktop/programming/system_script/"
-alias hdir="cd ~/Desktop/programming/html/"
 alias tdir="cd /media/pritam/T7/main"
+alias hdir="cd ~/Desktop/programming/html/"
+alias rdir="cd ~/Desktop/programming/rust/"
+alias spdir="cd ~/Desktop/programming/system_script/"
+alias cdir="cd ~/Desktop/programming/c_lang/practic/"
+alias pydir="cd ~/Desktop/programming/python/practic/"
+alias gdir="cd ~/Desktop/programming/git_repositories/"
 
 # System scrcpy with out python
-alias gfind="ls --color=auto -aF| grep"
 alias vi="nvim "
 alias tree="tre -ae "
-alias rmt7="sudo umount /media/pritam/T7"
-alias exiftool_f="exiftool -overwrite_original"
-alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
+alias gfind="ls --color=auto -aF | grep "
+alias rmt7="sudo umount /media/pritam/T7/"
+alias exiftool_f="exiftool -overwrite_original "
+alias rmdes="exiftool -overwrite_original -longdescription='' -description='' "
+alias yt-dlpp="-o '~/Downloads/yt_dlp/%(playlist)s/%(playlist_index)s-%(title)s.%(ext)s' "
+alias gitconfig="git config user.name 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
 alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Videos/screencasts/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
-alias gitconfig="git config user.naem 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
-alias githubconfig="git config user.naem 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
+alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
 
 # NNN file manager
 export NNN_OPTS="Rde"
-export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_COLOR="#00ff00"
+export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="a:/run/user/1000/gvfs/;h:~/;c:~/Desktop/programming/;t:~/.local/share/Trash/files;p:/media/pritam/"
-export SK_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
 alias song="ffplay -fs -ss 6741 ~/Videos/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
