@@ -14,6 +14,8 @@
     * neo vim
     * exiftool
     * ffmpeg
+    * rip grep
+    * entr 
     * yt-dlp
     * pandoc
     * tre `alternate for tree command` ~ `https://github.com/dduan/tre`
@@ -54,9 +56,11 @@
     * Whatsapp
     * DaVinci Resolve
     * office 365 `account login`
-    * xcode
+    * X code
     * Vs code
     * google drive
+    * unarchieve
+    * maccy `clip board history manager`
     * scrcpy
     * anydesk
     * fusion 360
