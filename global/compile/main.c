@@ -9,8 +9,8 @@
 
 void ch_str_lower(char *_content);
 bool str_ends_with(char *_content, char *_ends);
-void run(time_t _old_time, char *_command, short int *_return_value, short int _type);
 void ch_str_replace(char *_content, const char _which, const char _what);
+void run(time_t _old_time, char *_command, short int *_return_value, short int _type);
 
 
 int main(int argc, char *argv[]) {
@@ -125,6 +125,7 @@ int main(int argc, char *argv[]) {
 		char another_command[len_temp_dir + len_file_name];
 		sprintf(another_command, "%s%s%s", temp_dir, actual_file_name, file_extension);
 		printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", another_command);
+		// return_value = system(another_command);
 		run(old, another_command, &return_value, 2);
 	}
 
@@ -137,20 +138,20 @@ void run(time_t _old_time, char *_command, short int *_return_value, short int _
 		/* This check will encounter when the file type is (.py, .js) */
 		*_return_value = system(_command);
 		if(*_return_value == 0){
-			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%f\033[0m seconds)\n", ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
+			printf("[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%f\033[0m seconds)\n", ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 		else {
-			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
+			printf("[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 	}
 	else if(_type == 2){
 		/* This check will encounter when the file type is (.js, .rs, .c, .cpp) */
 		if(*_return_value == 0){
 			*_return_value = system(_command);
-			printf("\n[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%f\033[0m seconds)\n", ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
+			printf("[\033[1;32mDONE\033[0m] exited with (\033[1;34mcode = 0\033[0m) in (\033[1;35m%f\033[0m seconds)\n", ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 		else {
-			printf("\n[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
+			printf("[\033[1;31mDONE WITH AN ERROR\033[0m] exited with (\033[1;34mcode = %d\033[0m) in (\033[1;35m%lf\033[0m seconds)\n", *_return_value, ((double)(clock() - _old_time)) / CLOCKS_PER_SEC);
 		}
 	}
 }
@@ -166,7 +167,7 @@ void ch_str_lower(char *_content) {
 void ch_str_replace(char *_content, const char _which, const char _what) {
 	int _len = strlen(_content);
 
-	for(_len; _len; _len--) {
+	for(int i = _len; i; i--) {
 		if(_content[_len] == _which){
 			_content[_len] = _what;
 			break;

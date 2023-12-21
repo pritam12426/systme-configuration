@@ -19,7 +19,6 @@ alias pydir="cd ~/Developer/python/practic/"
 alias gdir="cd ~/Developer/git_repositories/"
 
 # System scrcpy with out python
-alias vi="nvim"
 alias lh="ls -aF --color=auto | egrep '^\.'"
 alias nq="networkquality"
 alias tree="tre -ae"
