@@ -19,19 +19,22 @@ alias pydir="cd ~/Developer/python/practic/"
 alias gdir="cd ~/Developer/git_repositories/"
 
 # System scrcpy with out python
-alias lh="ls -aF --color=auto | egrep '^\.'"
-alias nq="networkquality"
 alias tree="tre -ae"
+alias nq="networkquality"
 alias gfind="ls -aF --color=auto | grep -i"
+alias lh="ls -aF --color=auto | egrep '^\.'"
 alias exiftool_f="exiftool -overwrite_original"
+alias envpath='echo; tr ":" "\n" <<< "$PATH"; echo;'
 alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
-alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
-alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
 alias gitconfig="git config user.name 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
 alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
-alias envpath='echo; tr ":" "\n" <<< "$PATH"; echo;'
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
-alias insta="yt-dlp --embed-thumbnail --embed-metadata --ignore-config -o '~/Downloads/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'bestvideo+bestaudio' --cookies-from-browser 'firefox'"
+
+# yt-dlp
+alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
+alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
+alias short="yt-dlp --ignore-config --no-mtime -o '~/Downloads/short_vidoe/youtub_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'bestvideo+bestaudio'"
+alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/short_vidoe/short_vidoe/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'bestvideo+bestaudio' --cookies-from-browser 'firefox'"
 
 alias song="ffplay -fs -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
 
