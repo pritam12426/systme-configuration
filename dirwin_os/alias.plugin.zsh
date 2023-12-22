@@ -34,7 +34,7 @@ alias githubconfig="git config user.name 'Pritam' && git config user.email '8472
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
 alias short="yt-dlp --ignore-config --no-mtime -o '~/Downloads/short_vidoe/youtub_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'bestvideo+bestaudio'"
-alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/short_vidoe/short_vidoe/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'bestvideo+bestaudio' --cookies-from-browser 'firefox'"
+alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/short_vidoe/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'bestvideo+bestaudio' --cookies-from-browser 'firefox'"
 
 alias song="ffplay -fs -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
 
