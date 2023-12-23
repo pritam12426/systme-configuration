@@ -1,0 +1,8 @@
+-o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' 
+
+-f 'bestvideo+bestaudio' 
+--no-mtime
+--embed-thumbnail
+--embed-metadata
+--ignore-config
+--cookies-from-browser 'firefox'
