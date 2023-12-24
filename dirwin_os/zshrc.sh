@@ -13,7 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
 
 PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'" $ "
-# RPROMPT="~ %F{241}%t%f"
+RPROMPT="~ %F{241}%t%f"
 
 # ZSH_THEME="robbyrussell"
 # # ZSH_THEME="user_theme"

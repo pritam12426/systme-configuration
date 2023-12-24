@@ -9,7 +9,7 @@ alias evrc="sudo vim /etc/vim/vimrc"
 alias enrc="nvim ~/.config/nvim/init.vim" 
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
-# Fro change dir()
+# For change dir()
 alias tdir="cd /Volumes/T7/main"
 alias hdir="cd ~/Developer/html/"
 alias rdir="cd ~/Developer/rust/"
@@ -18,7 +18,7 @@ alias cdir="cd ~/Developer/c_lang/practic/"
 alias pydir="cd ~/Developer/python/practic/"
 alias gdir="cd ~/Developer/git_repositories/"
 
-# System scrcpy with out python
+# System scrcpy 
 alias tree="tre -ae"
 alias nq="networkquality"
 alias gfind="ls -aF --color=auto | grep -i"
@@ -45,6 +45,6 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
 
 # IP alias and functions
-alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"
-alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1"
+alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g' | tee /dev/tty | pbcopy"  # will print the loal ipv4 in termial.
+alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1 | tee /dev/tty | pbcopy" 
 
