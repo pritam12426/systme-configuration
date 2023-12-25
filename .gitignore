@@ -306,3 +306,4 @@ pyrightconfig.json
 *temp*
 rubbish/
 *.out
+*.DS_Store

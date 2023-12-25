@@ -32,9 +32,10 @@ alias githubconfig="git config user.name 'Pritam' && git config user.email '8472
 
 # yt-dlp
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
+alias yt-dlpx="yt-dlp --ignore-config --embed-chapters --embed-metadata -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
-alias short="yt-dlp --ignore-config --no-mtime -o '~/Downloads/yt_dlp/youtub_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'bestvideo+bestaudio'"
-alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'bestvideo+bestaudio' --cookies-from-browser 'firefox'"
+alias short="yt-dlp --ignore-config --no-mtime -o '~/Downloads/yt_dlp/youtub_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
+alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f best/bestvideo*+bestaudio* --cookies-from-browser 'firefox'"
 
 alias song="ffplay -fs -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
 
@@ -47,4 +48,3 @@ export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
 # IP alias and functions
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g' | tee /dev/tty | pbcopy"  # will print the loal ipv4 in termial.
 alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1 | tee /dev/tty | pbcopy" 
-
