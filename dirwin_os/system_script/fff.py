@@ -1,18 +1,14 @@
 #!/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
 # -*- coding: utf-8 -*-
 
-
-# This file can play Video or audio file anonymously.
-
 from getpass import getpass
 
 if getpass("*") != "name*":
 	exit(1)
 
 import os
-
 import json
-import ffmpeg  # ffmpeg-python
+import ffmpeg  # pip install ffmpeg-python
 import datetime
 from subprocess import run
 from random import shuffle, choice
@@ -73,7 +69,7 @@ def write_title(path: str, directory_content: list[str]) -> None:
 		new_title.update({i: read_metadata(path, i)})
 
 	with open(f"{path}.title_name.json", "w") as json_date:
-		json.dump(new_title, json_date, indent=2, sort_keys=True)
+		json.dump(new_title, json_date, indent='\t', sort_keys=True)
 
 
 def give_name(extension: str, length: int, path: str) -> str:
@@ -110,7 +106,7 @@ def copy_video(input_path: str) -> None:
 
 
 def move_video(input_path: str) -> None:
-	directory_content: list[str] = sorted([i for i in os.listdir(".") if i.endswith((".mp4", ".mkv"))])
+	directory_content: list[str] = sorted([i for i in os.listdir(".") if i.endswith((".mp4", ".mkv", ".webm"))])
 
 	for i in directory_content:
 		extension: str = i.rsplit(".")[-1]
@@ -156,7 +152,7 @@ def play_video(directory_content: list[str], user_input: int) -> str | None:
 directory_path: str = "/Users/pritam/.local/share/another_bin/"
 # directory_path: str = os.getcwd() + "/"
 
-all_file: list[str] = sorted(i for i in os.listdir(directory_path) if i.endswith((".mp4", ".mkv", ".mp3")))
+all_file: list[str] = sorted([i for i in os.listdir(directory_path) if i.endswith((".mp4", ".mkv", ".webm"))])
 
 if len(all_file) == 0:
 	exit("No media file.")
@@ -205,13 +201,13 @@ match input("Insert m, u, p >> "):
 				user = user.removeprefix("o")
 				if is_int(user) and int(user) <= (len(all_file) - 1):
 					user: int = int(user)
-					os.system(f"open {directory_path}{all_file[user]}")
+					run(["open", f"{directory_path + all_file[user]}"])
 				elif user == "r":
 					command: str = choice(all_file)	
 					element: str = f"● SO/no > '{all_file.index(command)}' > '{json_info.get(command).get('title')}'"
 					print(element)
 					print("=" * len(element))
-					os.system(f"open {directory_path}{command}")
+					run(["open" ,f"{directory_path + command}"])
 				else:
 					print("Invalid input.")
 				continue
@@ -220,7 +216,7 @@ match input("Insert m, u, p >> "):
 				if is_int(user) and int(user) <= (len(all_file) - 1):
 					user: int = int(user)
 					print(f"● Deleted: {all_file[user]}")
-					os.remove(f"{directory_path}{all_file[user]}")
+					os.remove(f"{directory_path + all_file[user]}")
 				else:
 					print("Invalid input.")
 				continue
@@ -237,10 +233,12 @@ match input("Insert m, u, p >> "):
 			else:
 				print("Invalid input.")
 				continue
+
 			title: str = f"{all_file.index(command)} - {json_info.get(command).get('title')}, '{json_info.get(command).get('height')}p' * '{json_info.get(command).get('duration')}'"
 			run(["ffplay", "-window_title", title, "-loop", "-1", directory_path + command], capture_output=True)
 	case "u":
 		write_title(directory_path, all_file)
+		# TODO: Add go to keyword
 	case "m":
 		match input(f"{'Move:':8}'m'\n{'Copy':8}'c'\nInsert >> "):
 			case "c":
@@ -249,5 +247,7 @@ match input("Insert m, u, p >> "):
 				move_video(directory_path)
 			case _:
 				print("Invalid input.")
+				exit(1)
 	case _:
 		print("Invalid input.")
+		exit(1)
