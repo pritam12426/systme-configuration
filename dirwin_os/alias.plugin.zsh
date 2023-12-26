@@ -35,7 +35,7 @@ alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
 alias yt-dlpx="yt-dlp --ignore-config --embed-chapters --embed-metadata -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
 alias short="yt-dlp --ignore-config --no-mtime -o '~/Downloads/yt_dlp/youtub_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f best/bestvideo*+bestaudio* --cookies-from-browser 'firefox'"
+alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
 
 alias song="ffplay -vf \"crop=h=800\" -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
 

@@ -157,6 +157,7 @@ directory_path: str = "/Users/pritam/.local/share/another_bin/"
 # directory_path: str = os.getcwd() + "/"
 
 all_file: list[str] = sorted(i for i in os.listdir(directory_path) if i.endswith((".mp4", ".mkv", ".mp3")))
+
 if len(all_file) == 0:
 	exit("No media file.")
 
@@ -195,9 +196,33 @@ match input("Insert m, u, p >> "):
 				os.system("clear")
 				user = user.removeprefix("?")
 				for index, i in enumerate(all_file):
-					i: str = i.rsplit(".", maxsplit=1)[0]
+					i: str = i.rsplit(".", 1)[0]
 					if user in i:
 						print(f"{index} > {i}")
+				continue
+			elif user.startswith("open ") or user.startswith("o"):
+				user = user.removeprefix("open ")
+				user = user.removeprefix("o")
+				if is_int(user) and int(user) <= (len(all_file) - 1):
+					user: int = int(user)
+					os.system(f"open {directory_path}{all_file[user]}")
+				elif user == "r":
+					command: str = choice(all_file)	
+					element: str = f"● SO/no > '{all_file.index(command)}' > '{json_info.get(command).get('title')}'"
+					print(element)
+					print("=" * len(element))
+					os.system(f"open {directory_path}{command}")
+				else:
+					print("Invalid input.")
+				continue
+			elif user.startswith("rm "):
+				user = user.removeprefix("rm ")
+				if is_int(user) and int(user) <= (len(all_file) - 1):
+					user: int = int(user)
+					print(f"● Deleted: {all_file[user]}")
+					os.remove(f"{directory_path}{all_file[user]}")
+				else:
+					print("Invalid input.")
 				continue
 			elif user == "r":
 				command: str = choice(all_file)
@@ -212,7 +237,6 @@ match input("Insert m, u, p >> "):
 			else:
 				print("Invalid input.")
 				continue
-
 			title: str = f"{all_file.index(command)} - {json_info.get(command).get('title')}, '{json_info.get(command).get('height')}p' * '{json_info.get(command).get('duration')}'"
 			run(["ffplay", "-window_title", title, "-loop", "-1", directory_path + command], capture_output=True)
 	case "u":

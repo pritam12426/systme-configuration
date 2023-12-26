@@ -4,18 +4,21 @@ findparms=(-type f -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav'
 command=""
 
 (find "." "${findparms[@]}" | sort | sed "s%./%%") | sk --color=current_bg:232,info:32 | {
-	IFS='' read -r f
-	extension="${f##*.}"
+	read -r sk_passed_file
+	extension="${sk_passed_file##*.}"
+
+	# video_title=$(ffprobe -v error -select_streams v:0 -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
 
 	if [ "$extension" == "mp3" ] || [ "$extension" == "m4a" ] || [ "$extension" == "mav" ]; then
-		command+="ffplay -loop -1 "${f}""
+		command+="ffplay -loop -1 -seek_interval 5"
 	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ];  then
-		command+="ffplay -loop -1 -sn "${f}""
+		command+="ffplay -loop -1 -sn -seek_interval 5 -volume 50"
 	else
 		echo "Error"
-		exit
+		exit 1
 	fi
 
-	echo $command
-	$command > /dev/null 2>&1
+	echo $command \"$sk_passed_file\"
+	$command "$sk_passed_file" > /dev/null 2>&1
 }
+
