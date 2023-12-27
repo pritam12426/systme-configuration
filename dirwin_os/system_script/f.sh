@@ -1,14 +1,27 @@
 #!/opt/homebrew/bin/bash
 
-findparms=(-type f -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
+findparms=(-maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
 
-if [[ "$PWD" == "$HOME/Downloads/yt_dlp"* ]]; then
-	findparms+=(-mtime -9999) 
-fi
+# if [[ "$PWD" == "$HOME/Downloads/yt_dlp"* ]]; then
+# 	findparms=(-type f -mtime -1  -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
+# else
+# 	findparms=(-type f -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
+# fi
+
+format_seconds() {
+	local seconds=$1
+	local hours=$((seconds / 3600))
+	local minutes=$(( (seconds % 3600) / 60 ))
+	local remaining_seconds=$((seconds % 60))
+
+	printf "%02d:%02d:%02d\n" $hours $minutes $remaining_seconds
+}
 
 command=""
+video_title=""
+title_opction=""
 
-(find "." "${findparms[@]}" | sed "s%./%%") | sk --color=current_bg:232,info:32 | {
+(find "." "${findparms[@]}" | sed "s%./%%" | sort) | sk --color=current_bg:232,info:32 | {
 	read -r sk_passed_file
 	extension="${sk_passed_file##*.}"
 
@@ -18,16 +31,30 @@ command=""
 		video_title+=$sk_passed_file
 	fi
 
+	title_opction+=", "
+
 	if [ "$extension" == "mp3" ] || [ "$extension" == "m4a" ] || [ "$extension" == "mav" ]; then
-		command+="ffplay -loop -1 -seek_interval 5 -showmode 1"
+		command+="ffplay -loop -1 -seek_interval 5 -showmode 1 -window_title"
 	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ];  then
+
+		title_opction+="'"
+		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=s=x:p=0 "$sk_passed_file") 
+		title_opction+="p'"
+	
 		command+="ffplay -loop -1 -sn -seek_interval 5 -volume 50 -window_title"
 	else
-		# echo "Error"
 		echo -e "\aError: Something went wrong!"
-		exit
+		exit 1
 	fi
 
-	echo $command \"$video_title\" \"$sk_passed_file\"
-	$command "$video_title" "$sk_passed_file" > /dev/null 2>&1
+	title_opction+=" • "
+	time+=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
+	time=$(printf "%.0f" "$time")
+	title_opction+=$(format_seconds $time)
+
+	echo "Title: $video_title"
+	echo -e "File:  $sk_passed_file\n"
+
+	echo $command \"$video_title$title_opction\" \"./$sk_passed_file\"
+	nohup $command "$video_title$title_opction" "$sk_passed_file" > /dev/null 2>&1 &
 }
