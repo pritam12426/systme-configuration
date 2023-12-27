@@ -10,7 +10,7 @@ alias enrc="nvim ~/.config/nvim/init.vim"
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # For change dir()
-alias tdir="cd /Volumes/T7/main"
+alias tdir="cd /Volumes/T7/main/videos/courses/"
 alias hdir="cd ~/Developer/html/"
 alias rdir="cd ~/Developer/rust/"
 alias spdir="cd ~/Developer/system_script/"
@@ -47,5 +47,6 @@ export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
 
 # IP alias and functions
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g' | tee /dev/tty | pbcopy"  # will print the loal ipv4 in termial.
+alias macid="ifconfig | grep ether | head -n 8 | tail -n 1 | tee /dev/tty | pbcopy"  # will print the return the macid of the computer
 alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1 | tee /dev/tty | pbcopy" 
 
