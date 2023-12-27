@@ -55,7 +55,7 @@ title_opction=""
 	echo "Title: $video_title"
 	echo -e "File:  $sk_passed_file\n"
 
-	echo $command \"$video_title$title_opction\" \"./$sk_passed_file\"
+	echo $command \"$video_title$title_opction\" \"$PWD/$sk_passed_file\"
 	nohup $command "$video_title$title_opction" "$sk_passed_file" > /dev/null 2>&1 &
 	sleep 1
 }

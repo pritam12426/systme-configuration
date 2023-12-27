@@ -8,7 +8,7 @@ if os.getcwd() == os.getenv("HOME"):
 	print("This is 'HOME' directory.\a")
 	exit(1)
 
-if(os.getenv("HOME") not in os.getcwd() and "/media" not in os.getcwd()):
+if(os.getenv("HOME") not in os.getcwd() and "/T7" not in os.getcwd()):
 	print("This is 'ROOT' directory.\a")
 	exit(1)
 
@@ -128,9 +128,9 @@ for i in keys_new_name:
 if len(all_file) >= 2:
 	print(
 		f"{'RENAMED:':13}{int_value.get('total_rename')}\n\t{'☶  File:':12}{int_value.get('renamed_file')}\n"
-		f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n"
+		f"\t{'󰉋  Folder:':12}{int_value.get('renamed_folder')}\n"
 		f"{'HIDDEN:':13}{int_value.get('hidden')}\n\t{'☶  File:':12}{int_value.get('hidden_file')}\n"
-		f"\t{'🖿  Folder:':12}{int_value.get('renamed_folder')}\n\n"
+		f"\t{'󰉋  Folder:':12}{int_value.get('renamed_folder')}\n\n"
 		f"{'Untouched:':13}{int_value.get('untouched')}\n"
 		f"{'Unknown:':13}{int_value.get('unknown')}\n"
 		f"{'Total:':13}{int_value.get('total')}".expandtabs(1)
