@@ -3,7 +3,7 @@
 findparms=(-maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
 
 # if [[ "$PWD" == "$HOME/Downloads/yt_dlp"* ]]; then
-# 	findparms=(-type f -mtime -1  -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
+# 	findparms=(-type f -mtime -1 -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
 # else
 # 	findparms=(-type f -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
 # fi
@@ -57,4 +57,5 @@ title_opction=""
 
 	echo $command \"$video_title$title_opction\" \"./$sk_passed_file\"
 	nohup $command "$video_title$title_opction" "$sk_passed_file" > /dev/null 2>&1 &
+	sleep 1
 }

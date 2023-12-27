@@ -24,6 +24,8 @@
 " Shortcut keys
 nnoremap <C-s> :w<CR>
 nnoremap <C-w> :q!<CR>
+nnoremap <C-v> :r !pbpaste<CR>
+nnoremap <C-c> :w !pbcopy<CR>
 nnoremap <C-d> :q!<CR>
 nnoremap <C-j> :term<CR>
 nnoremap <A-z> :set wrap<CR>
