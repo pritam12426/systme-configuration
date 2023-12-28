@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
 # -*- coding: utf-8 -*-
 
 # Ignore this file
@@ -52,9 +52,9 @@ def status(file_name: str, get_status: str, columns_size: int, date_time: str = 
 		case "UPDATED":
 			sine: str = "✔"
 		case "UP TO DATE":
-			sine: str = "⬤"
+			sine: str = ""
 		case "COPIED":
-			sine: str = "🠪"
+			sine: str = ""
 		case _:
 			sine: str = "-"
 
@@ -73,7 +73,7 @@ def file_or_not(file_path: str, columns_size: int = 42) -> bool:
 	print(status(file_path, "FILE NOT FOUND", columns_size))
 
 
-with open("./file_path.yaml", "r") as file_content:
+with open("/Users/pritam/Developer/system_script/file_path.yaml", "r") as file_content:
 	all_path: dict = safe_load(file_content)
 
 git_dir: str = all_path.pop("git_dir")
@@ -105,7 +105,7 @@ print("-" * terminal_size)
 
 uncommitted_file: list[str] | None = get_uncommitted_files(local_repo)
 if uncommitted_file is not None:
-	print(f"Uncommitted files 🠪 {uncommitted_file}\n")
+	print(f"Uncommitted files 󰜴 {uncommitted_file}\n")
 	match input(f"Wants to commit '{len(uncommitted_file)}' files [y/n] >> "):
 		case "y":
 			commit: str = input("Any custom commit >> ")
