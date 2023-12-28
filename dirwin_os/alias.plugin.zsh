@@ -1,7 +1,7 @@
 # This file conten only aliases for "zsh/bash"
 
-export CLICOLOR=1 
-export LSCOLORS=ExFxBxDxCxegedabagacad 
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # For neo nvim
 alias erc="nvim ~/.zshrc"
@@ -25,7 +25,7 @@ alias gfind="ls -aF --color=auto | grep -i"
 alias lh="ls -aF --color=auto | egrep '^\.'"
 alias exiftool_f="exiftool -overwrite_original"
 alias envpath='echo; tr ":" "\n" <<< "$PATH"; echo;'
-alias rmdes="exiftool -overwrite_original -longdescription='' -description=''"
+alias rmdes="exiftool -P -overwrite_original -longdescription='' -description=''"
 alias gitconfig="git config user.name 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
 alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').rmp4"
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
@@ -40,12 +40,46 @@ alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-confi
 alias song="ffplay -vf \"crop=h=800\" -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv >>/dev/null 2>&1"
 
 # NNN file manager
-export NNN_OPTS="Rde"
-export NNN_COLOR="#00ff00"
+export NNN_OPTS="RAiUNdxe"
+export NNN_COLORS='5236'
+export NNN_FIFO=/Users/pritam/Library/Caches
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
 
-# IP alias and functions
+# nnn filemanger cd on quit
+n ()
+{
+    # Block nesting of nnn in subshells
+    [ "${NNNLVL:-0}" -eq 0 ] || {
+        echo "nnn is already running"
+        return
+    }
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    # The command builtin allows one to alias nnn to n, if desired, without
+    # making an infinitely recursive alias
+    command nnn "$@"
+
+    [ ! -f "$NNN_TMPFILE" ] || {
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE" > /dev/null
+    }
+}
+
+# IP / macId alias and functions
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g' | tee /dev/tty | pbcopy"  # will print the loal ipv4 in termial.
 alias macid="ifconfig | grep ether | head -n 8 | tail -n 1 | tee /dev/tty | pbcopy"  # will print the return the macid of the computer
 alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1 | tee /dev/tty | pbcopy" 

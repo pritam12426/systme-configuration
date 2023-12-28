@@ -1,4 +1,4 @@
-# defaults write com.apple.dock autohide-delay -float 0 && defaults write com.apple.dock autohide-time-modifier -float 0
+# defaults write com.apple.dock autohide-delay -float 0 && defaults write com.apple.dock autohide-time-modifier -float 0.1
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/Developer/system_script:$PATH
 
