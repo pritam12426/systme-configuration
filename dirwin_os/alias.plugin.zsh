@@ -20,12 +20,13 @@ alias gdir="cd ~/Developer/git_repositories/"
 
 # System scrcpy 
 alias tree="tre -ae"
+alias rmds="find . -name '.DS_Store' && find . -name '.DS_Store' -exec rm {} +"
 alias nq="networkquality"
 alias gfind="ls -aF --color=auto | grep -i"
 alias lh="ls -aF --color=auto | egrep '^\.'"
-alias exiftool_f="exiftool -overwrite_original"
+alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias envpath='echo; tr ":" "\n" <<< "$PATH"; echo;'
-alias rmdes="exiftool -P -overwrite_original -longdescription='' -description=''"
+alias rmdes="exiftool -P -overwrite_original_in_place -longdescription='' -description=''"
 alias gitconfig="git config user.name 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
 alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').rmp4"
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"

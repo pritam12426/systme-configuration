@@ -34,14 +34,23 @@ title_opction=""
 	title_opction+=", "
 
 	if [ "$extension" == "mp3" ] || [ "$extension" == "m4a" ] || [ "$extension" == "mav" ]; then
-		command+="ffplay -loop -1 -seek_interval 5 -showmode 1 -window_title"
+
+		title_opction+="'"
+		bitrate=$(ffprobe -v error -select_streams a:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
+		title_opction+=$(echo "scale=2; $bitrate / 1000" | bc | xargs printf "%.0f" )
+		title_opction+="kbps'"
+
+		command+="ffplay -loop -1 -nostats -seek_interval 2 -volume 50 -window_title"
 	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ];  then
 
 		title_opction+="'"
 		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=s=x:p=0 "$sk_passed_file") 
-		title_opction+="p'"
+		title_opction+="p' • '"
+		fps=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file") 
+		title_opction+=$(echo "scale=4; $fps" | bc | xargs printf "%.0f" )
+		title_opction+="fps'"
 	
-		command+="ffplay -loop -1 -sn -seek_interval 5 -volume 50 -window_title"
+		command+="ffplay -nostats -loop -1 -sn -seek_interval 5 -volume 75 -window_title"
 	else
 		echo -e "\aError: Something went wrong!"
 		exit 1
