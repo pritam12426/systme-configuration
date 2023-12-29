@@ -28,7 +28,7 @@ title_opction=""
 	video_title=$(ffprobe -v error -select_streams v:0 -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
 
 	if [ -z "$video_title" ]; then
-		video_title+=$sk_passed_file
+		video_title+=$(echo $sk_passed_file | tr '_' ' ')
 	fi
 
 	title_opction+=", "
@@ -41,10 +41,12 @@ title_opction=""
 		title_opction+="kbps'"
 
 		command+="ffplay -loop -1 -nostats -seek_interval 2 -volume 50 -window_title"
-	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ];  then
+	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ]; then
 
 		title_opction+="'"
-		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=s=x:p=0 "$sk_passed_file") 
+		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=s=x:p=0 "$sk_passed_file")
+		title_opction+="x"
+		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=s=x:p=0 "$sk_passed_file")
 		title_opction+="p' • '"
 		fps=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file") 
 		title_opction+=$(echo "scale=4; $fps" | bc | xargs printf "%.0f" )
@@ -56,10 +58,11 @@ title_opction=""
 		exit 1
 	fi
 
-	title_opction+=" • "
+	title_opction+=" • '"
 	time+=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
 	time=$(printf "%.0f" "$time")
-	title_opction+=$(format_seconds $time)
+	title_opction+=$(format_seconds $time )
+	title_opction+="'"
 
 	echo "Title: $video_title"
 	echo -e "File:  $sk_passed_file\n"

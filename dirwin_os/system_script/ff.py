@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
 # -*- coding: utf-8 -*-
 
 # Command line media player by using ffplay lib.
