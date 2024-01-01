@@ -1,45 +1,132 @@
-// bit for modifiers
-// bits: 0  None 
-// bits: 1  SHIFT
-// bits: 2  CONTROL
-//
-// Note:
-// If the default key layout is lower case,
-// and you want to use `Shift + q` to trigger the exit event,
-// the setting should like this `exit: Some(( code: Char('Q'), modifiers: ( bits: 1,),)),`
-// The Char should be upper case, and the shift modified bit should be set to 1.
-//
-// Note:
-// find `KeysList` type in src/keys/key_list.rs for all possible keys.
-// every key not overwritten via the config file will use the default specified there
-(
-    open_help: Some(( code: F(1), modifiers: ( bits: 0,),)),
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <sys/ioctl.h>
 
-    move_left: Some(( code: Char('h'), modifiers: ( bits: 0,),)),
-    move_right: Some(( code: Char('l'), modifiers: ( bits: 0,),)),
-    move_up: Some(( code: Char('k'), modifiers: ( bits: 0,),)),
-    move_down: Some(( code: Char('j'), modifiers: ( bits: 0,),)),
-    
-    popup_up: Some(( code: Char('p'), modifiers: ( bits: 2,),)),
-    popup_down: Some(( code: Char('n'), modifiers: ( bits: 2,),)),
-    page_up: Some(( code: Char('b'), modifiers: ( bits: 2,),)),
-    page_down: Some(( code: Char('f'), modifiers: ( bits: 2,),)),
-    home: Some(( code: Char('g'), modifiers: ( bits: 0,),)),
-    end: Some(( code: Char('G'), modifiers: ( bits: 1,),)),
-    shift_up: Some(( code: Char('K'), modifiers: ( bits: 1,),)),
-    shift_down: Some(( code: Char('J'), modifiers: ( bits: 1,),)),
 
-    edit_file: Some(( code: Char('I'), modifiers: ( bits: 1,),)),
+int countOfInt(int x) {
+	int _count = 0;
 
-    status_reset_item: Some(( code: Char('U'), modifiers: ( bits: 1,),)),
+	if (x == 0) return 1;
 
-    diff_reset_lines: Some(( code: Char('u'), modifiers: ( bits: 0,),)),
-    diff_stage_lines: Some(( code: Char('s'), modifiers: ( bits: 0,),)),
+	while (x != 0) {
+		x /= 10;
+		_count++;
+	}
+	
+	return _count;
+}
 
-    stashing_save: Some(( code: Char('w'), modifiers: ( bits: 0,),)),
-    stashing_toggle_index: Some(( code: Char('m'), modifiers: ( bits: 0,),)),
+int intArrLargestNum (int *_arr, unsigned long _len) {
+	int max = 0;
+	for (int i  = 0; i < _len; i++) {
+		if (max < _arr[i]) max = _arr[i];
+	}
 
-    stash_open: Some(( code: Char('l'), modifiers: ( bits: 0,),)),
+	return max;
+}
 
-    abort_merge: Some(( code: Char('M'), modifiers: ( bits: 1,),)),
-)
+void chStrLower(char *_content) {
+	for (int i = 0; ((_content[i]) != '\0'); i++) {
+		if (_content[i] >= 65 && _content[i] <= 90) {
+			_content[i] = (_content[i] + 32);
+		}
+	}
+}
+
+
+void chStrUpper(char *_content) {
+	for (int i = 0; ((_content[i]) != '\0'); i++) {
+		if (_content[i] >= 97 && _content[i] <= 122) {
+			_content[i] = (_content[i] - 32);
+		}
+	}
+}
+
+void chStrTitle(char *_content) {
+	chStrLower(_content);
+
+	if (_content[0] >= 97 && _content[0] <= 122) {
+		_content[0] = (_content[0] - 32);
+	}
+
+	for (int i = 0; ((_content[i]) != '\0'); i++) {
+		if (( ! ((_content[i] >= 65 && _content[i] <= 90) || (_content[i] >= 97 && _content[i] <= 122)))){
+			if ((_content[i + 1] >= 65 && _content[i + 1] <= 90) || (_content[i + 1] >= 97 && _content[i + 1] <= 122)){
+				_content[i + 1]  = (_content[i + 1]) - 32;
+			}
+		}
+	}
+}
+
+
+void chStrReplace(char *_content, const char _which, const char _what) {
+	for (int i = 0; ((_content[i]) != '\0'); i++){
+		if (_content[i] == _which) _content[i] = _what;
+	}
+}
+
+
+void strSwitchCase(char *_content) {
+	for (int i = 0; ((_content[i]) != '\0'); i++){
+		if (_content[i] >= 65 && _content[i] <= 90){
+			_content[i] = (_content[i] + 32);
+		}
+		else if (_content[i] >= 97 && _content[i] <= 122){
+			_content[i] = (_content[i] - 32);
+		} 
+	}
+}
+
+
+void printNTime(const char _what, const unsigned _time, bool _new_line) {
+	for (int i = 1; i <= _time; i++) {
+		putchar((int) _what);
+	}
+
+	if (_new_line) putchar((int) '\n');
+}
+
+
+bool strEndWith(const char *_content, const char *_ends) {
+	unsigned long _len_ends = strlen(_ends);
+	unsigned long _len_content = strlen(_ends);
+
+	if (_len_content > _len_ends) return false;
+
+	for (int i = 0; ((_content[i]) != '\0'); i++) {
+		if (_content[(_len_content - i - 1)] != _ends[(_len_ends - i - 1)]) return false;
+	}
+
+	return true;
+}
+
+
+void bubbleSort(int *_arr, unsigned long _len) {
+	int temp;
+
+	for (int i = 0; i < _len; i++) {
+		for (int j = 0; j < (_len - i - 1); j++) {
+			if(_arr[j] > _arr[j + 1]){
+				temp = _arr[j];
+				_arr[j] = _arr[j + 1];
+				_arr[j + 1] = temp;
+			}
+		}
+	}
+}
+
+
+int terminal_col_size(void) {
+	struct winsize w;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	return w.ws_col;
+}
+
+
+int terminal_row_size(void) {
+	struct winsize w;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	return w.ws_row;
+}
