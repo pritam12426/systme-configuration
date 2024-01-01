@@ -22,7 +22,7 @@ alias pydir="cd ~/Developer/python/practic/"
 alias gdir="cd ~/Developer/git_repositories/"
 alias tdir="cd /Volumes/T7/main/videos/courses/"
 
-# System scrcpy 
+# System scripts
 alias tree="tre -ae"
 alias hc="cat /dev/null > ~/.zsh_history"
 alias nq="networkquality"
@@ -34,7 +34,7 @@ alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias removeds="echo 'removed:' && findds && find . -name '.DS_Store' -exec rm -f {} +"
 alias rmdes="exiftool -P -overwrite_original_in_place -longdescription='' -description=''"
 alias gitconfig="git config user.name 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
-alias scrcpy_r="scrcpy -m 1080 --max-fps=60 -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').rmp4"
+alias scrcpy_r="scrcpy -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
 
 # yt-dlp
