@@ -83,7 +83,6 @@ zstyle ':omz:update' frequency 13
 plugins=(
 	alias    #  Costome alias
 	history
-	copypath
 	zsh-autosuggestions
 	# git
 )
