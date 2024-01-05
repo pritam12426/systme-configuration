@@ -14,6 +14,7 @@ alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 alias ga='git add'
 alias gaa='git add --all'
 alias gst='git status'
+alias gc='git commit'
 alias gss='git status --short'
 alias gpmain='git push origin main'
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
@@ -34,7 +35,7 @@ alias pdir="cd $present_working_project_directory"
 
 
 # System scripts
-alias aliasfind="alias | grep -i "
+alias lfind="alias | grep -i "
 alias tree="tre -e"
 alias hc="cat /dev/null > ~/.zsh_history"
 alias nq="networkquality"
@@ -58,15 +59,16 @@ alias song="ffplay -vf \"crop=h=800\" -ss 6741 -t 70 -loop -1 ~/Movies/movies/br
 
 # NNN file manager
 export NNN_COLORS='5236'
-export NNN_OPTS="RAiUNdxe"
+export NNN_OPTS="RAUNdxe"
+export NNN_OPENER="ffplay"
 export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
+export NNN_PLUG='r:fixname;f:fzplug;g:gitroot;c:cbcopy-mac'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-export NNN_OPENER="ffplay"
 
 # nnn filemanger cd on quit
-n ()
+nnn ()
 {
 	# Block nesting of nnn in subshells
 	[ "${NNNLVL:-0}" -eq 0 ] || {
