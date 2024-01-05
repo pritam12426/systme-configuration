@@ -10,6 +10,15 @@ alias evrc="sudo vim /etc/vim/vimrc"
 alias enrc="nvim ~/.config/nvim/init.vim" 
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
+# Git alias
+alias ga='git add'
+alias gaa='git add --all'
+alias gst='git status'
+alias gss='git status --short'
+alias gpmain='git push origin main'
+alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
+
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -25,7 +34,8 @@ alias pdir="cd $present_working_project_directory"
 
 
 # System scripts
-alias tree="tre -ae"
+alias aliasfind="alias | grep -i "
+alias tree="tre -e"
 alias hc="cat /dev/null > ~/.zsh_history"
 alias nq="networkquality"
 alias gfind="ls -aF --color=auto | grep -i"
@@ -35,9 +45,7 @@ alias envpath="echo $PATH | tr ':' '\n' | bat"
 alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias removeds="echo 'removed:' && findds && find . -name '.DS_Store' -exec rm -f {} +"
 alias rmdes="exiftool -P -overwrite_original_in_place -longdescription='' -description=''"
-alias gitconfig="git config user.name 'Pritam' && git config user.email 'pritamkumar12426@gmail.com'"
 alias scrcpy_r="scrcpy -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
-alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
 
 # yt-dlp
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
