@@ -55,6 +55,7 @@ export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
+export NNN_OPENER="ffplay"
 
 # nnn filemanger cd on quit
 n ()

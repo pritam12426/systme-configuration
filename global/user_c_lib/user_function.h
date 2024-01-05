@@ -18,6 +18,7 @@ int countOfInt(int x) {
 	return _count;
 }
 
+
 int intArrLargestNum (int *_arr, unsigned long _len) {
 	int max = 0;
 	for (int i  = 0; i < _len; i++) {
@@ -43,6 +44,7 @@ void chStrUpper(char *_content) {
 		}
 	}
 }
+
 
 void chStrTitle(char *_content) {
 	chStrLower(_content);
@@ -91,11 +93,12 @@ void printNTime(const char _what, const unsigned _time, bool _new_line) {
 
 bool strEndWith(const char *_content, const char *_ends) {
 	unsigned long _len_ends = strlen(_ends);
-	unsigned long _len_content = strlen(_ends);
+	unsigned long _len_content = strlen(_content);
 
-	if (_len_content > _len_ends) return false;
+	if (_len_content < _len_ends) return false;
 
-	for (int i = 0; ((_content[i]) != '\0'); i++) {
+	for(int i = 0; ((_ends[i]) != '\0'); i++){
+		// printf("end > %c contn %c\n", _content[(_len_content - i - 1)], _ends[(_len_ends - i - 1)]);
 		if (_content[(_len_content - i - 1)] != _ends[(_len_ends - i - 1)]) return false;
 	}
 
