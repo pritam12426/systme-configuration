@@ -53,9 +53,9 @@ alias scrcpy_r="scrcpy -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S
 # yt-dlp
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
-alias yt-dlpx="yt-dlp --ignore-config --embed-chapters --embed-metadata -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
+alias yt-dlpx="yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias short="yt-dlp --ignore-config --no-mtime -o '~/Downloads/yt_dlp/youtub_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias insta="yt-dlp --embed-thumbnail --no-mtime --embed-metadata --ignore-config -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
+alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
 
 alias song="ffplay -vf \"crop=h=800\" -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv -window_title ' ' >/dev/null 2>&1"
 
@@ -65,7 +65,7 @@ export NNN_OPTS="RAUNdxe"
 export NNN_OPENER="r"
 export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
-export NNN_PLUG='r:fixname;f:fzplug;g:gitroot;c:cbcopy-mac'
+export NNN_PLUG='g:gitroot;c:cbcopy-mac'
 export NNN_BMS="d:~/Developer/;s:/Volumes/T7/main/videos/;y:~/Downloads/yt_dlp/;m:~/Music/local/"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
@@ -109,7 +109,8 @@ function pathcp {
 }
 
 # IP / macId alias and functions
+alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2>> /dev/null | sh"
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g' | tee /dev/tty | pbcopy"  # will print the loal ipv4 in termial.
-alias macid="ifconfig | grep ether | head -n 8 | tail -n 1 | tee /dev/tty | pbcopy"  # will print the return the macid of the computer
+alias macid="ifconfig -a | grep ether | tail -n 4 | head -n 1 | grep -oE '([0-9][0-9]:[a-z][0-9]:[a-z][a-z]:[a-z][a-z]:[0-9][0-9]:[0-9][0-9])' | tee /dev/tty | pbcopy"  # will print the return the macid of the computer
 alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1 | tee /dev/tty | pbcopy" 
 

@@ -46,12 +46,12 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("i", "jk", "<ESC>")
 
 -- nice to have
-keymap.set("", "<leader>w", ":w<CR>")
-keymap.set("", "<leader>q", ":q!<CR>")
-keymap.set("", "<leader>x", ":x<CR>")
+keymap.set("n", "<leader>w", ":w<CR>")
+keymap.set("n", "<leader>q", ":q!<CR>")
+keymap.set("n", "<leader>x", ":x<CR>")
 
 -- clear search highlights
-keymap.set({"i", "n"}, "<leader>nh", ":nohl<CR>")
+keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
