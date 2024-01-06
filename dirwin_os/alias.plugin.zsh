@@ -15,8 +15,10 @@ alias ga='git add'
 alias gaa='git add --all'
 alias gst='git status'
 alias gc='git commit'
+alias gs='git status'
 alias gss='git status --short'
 alias gpmain='git push origin main'
+alias gp='git push origin'
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
 
 
@@ -60,11 +62,11 @@ alias song="ffplay -vf \"crop=h=800\" -ss 6741 -t 70 -loop -1 ~/Movies/movies/br
 # NNN file manager
 export NNN_COLORS='5236'
 export NNN_OPTS="RAUNdxe"
-export NNN_OPENER="ffplay"
+export NNN_OPENER="r"
 export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
-export NNN_BMS="c:~/Developer/;d:/Volumes/;h:~;y:~/Downloads/yt_dlp/"
 export NNN_PLUG='r:fixname;f:fzplug;g:gitroot;c:cbcopy-mac'
+export NNN_BMS="d:~/Developer/;s:/Volumes/T7/main/videos/;y:~/Downloads/yt_dlp/;m:~/Music/local/"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
 # nnn filemanger cd on quit
@@ -110,3 +112,4 @@ function pathcp {
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g' | tee /dev/tty | pbcopy"  # will print the loal ipv4 in termial.
 alias macid="ifconfig | grep ether | head -n 8 | tail -n 1 | tee /dev/tty | pbcopy"  # will print the return the macid of the computer
 alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1 | tee /dev/tty | pbcopy" 
+
