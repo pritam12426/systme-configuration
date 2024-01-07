@@ -54,11 +54,12 @@ new_name="${filename//./-}"
 # Make bin dir if it is not present.
 
 # Run command for 'gcc' or 'gpp' according to the file type.
-("$command" "$path/$filename" -o "$HOME/Library/Caches/$new_name.out")
+("$command" "$path/$filename" -o "$TMPDIR$new_name.out")
 
 if [[ "$?" = 0 ]]; then
 	# "$path/bin/$new_name.out"
-	"$HOME/Library/Caches/$new_name.out"
+	echo "$TMPDIR$new_name.out"
+	"$TMPDIR/$new_name.out"
 	exit "$?"
 else
 	exit "$?"
