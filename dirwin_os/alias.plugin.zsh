@@ -105,7 +105,7 @@ function pathcp {
 	# local file="${1:-.}"
 	local file="${1:-}"
 	[[ $file = /* ]] || file="$PWD/$file"
-	echo "${file:a}" | pbcopy
+	echo "${file:a}" | tr  '\n' ' ' | pbcopy
 }
 
 # IP / macId alias and functions
