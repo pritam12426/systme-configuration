@@ -84,9 +84,9 @@ int main(int argc, char *argv[]) {
 	char *temp_dir;
 
 	#ifdef linux
-		temp_dir = "/tmp/";
+		temp_dir = getenv("TMPDIR");
 	#elif __APPLE__
-		temp_dir = "~/Library/Caches/";
+		temp_dir = getenv("TMPDIR");
 	#elif __WIN32
 		temp_dir = "C:\\WINDOWS\\Temp\\";
 	#else
