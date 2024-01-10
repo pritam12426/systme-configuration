@@ -26,4 +26,5 @@ alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -lah'
 
+
 . "$HOME/.cargo/env"

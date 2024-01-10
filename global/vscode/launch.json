@@ -1,0 +1,32 @@
+{
+    // It is imp or rum this command before running command in {gcc <|FILE|> -g -Wall -o a.out}
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+
+            "linux": {
+                "MIMode": "gdb"
+                // "miDebuggerPath": "gdb",
+            },
+            "osx": {
+                "MIMode": "lldb"
+                // "miDebuggerPath": "lldb-mi",
+            },
+            "windows": {
+                "MIMode": "gdb"
+                // "miDebuggerPath": "gdb.exe",
+            }
+
+        }
+    ]
+}

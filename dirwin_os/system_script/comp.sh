@@ -58,6 +58,7 @@ new_name="${filename//./-}"
 
 if [[ "$?" = 0 ]]; then
 	# "$path/bin/$new_name.out"
+	# echo "$TMPDIR$new_name.out"
 	"$TMPDIR$new_name.out"
 	exit "$?"
 else
