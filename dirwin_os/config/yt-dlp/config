@@ -1,4 +1,4 @@
--o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'
+-o "~/Downloads/yt_dlp/video/%(title)s.%(ext)s"
 -f "137+140/bestvideo*[height=1080][ext=mp4][fps<=30]+bestaudio*[ext=m4a]/bestvideo*[height=1080][ext=mp4][fps<=60]+bestaudio*[ext=m4a]/bestvideo*[height<=1080][ext=mp4]"
 
 --embed-chapters
@@ -6,3 +6,4 @@
 --embed-thumbnail
 --embed-subs
 --parse-metadata "video::(?P<description>)"
+
