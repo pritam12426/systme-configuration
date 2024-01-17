@@ -33,6 +33,7 @@ alias cdir="cd ~/Developer/c_lang/practic/"
 alias pydir="cd ~/Developer/python/practic/"
 alias gdir="cd ~/Developer/git_repositories/"
 alias tdir="cd /Volumes/T7/main/videos/courses/"
+alias cpdir="cd ~/Developer/cpp_lang/practic"
 alias pdir="cd $present_working_project_directory"
 
 
