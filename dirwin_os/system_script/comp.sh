@@ -20,9 +20,9 @@ fi
 
 # Checking file type.
 if [[ "$file" =~ .c$ ]]; then
-	command="/usr/bin/gcc"
+	command=$(which gcc)
 elif [[ "$file" =~ .cpp$ ]]; then
-	command="/usr/bin/g++"
+	command=$(which g++)
 elif [[ "$file" =~ .rs$ ]]; then
 	cargo run 
 	exit "$?"
