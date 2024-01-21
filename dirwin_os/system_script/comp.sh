@@ -37,7 +37,7 @@ elif [[ "$file" =~ .py$ ]]; then
 	python3 "$file"
 	exit "$?"
 elif [[ "$file" =~ .sh$ ]]; then
-	"./$file"
+	"$file"
 	exit "$?"
 else
 	root_data=$(cat "$file" | head -n 1 | cut -c 3-)
