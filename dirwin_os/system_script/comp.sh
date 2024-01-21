@@ -26,6 +26,9 @@ elif [[ "$file" =~ .cpp$ ]]; then
 elif [[ "$file" =~ .rs$ ]]; then
 	cargo run 
 	exit "$?"
+elif [[ "$file" =~ makefile$ ]]; then
+	make
+	exit "$?"
 elif [[ "$file" =~ .html$ ]]; then
 	open "$file"
 	exit 0
