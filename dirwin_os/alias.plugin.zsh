@@ -46,11 +46,18 @@ alias gfind="ls -aF --color=auto | grep -i"
 alias lh="ls -aF --color=auto | egrep '^\.'"
 alias findds="find . -type f -name '.DS_Store'"
 alias envpath="echo $PATH | tr ':' '\n' | bat"
-alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias removeds="echo 'removed:' && findds && find . -name '.DS_Store' -exec rm -f {} +"
-alias rmdes="exiftool -P -overwrite_original_in_place -longdescription='' -description=''"
 alias scrcpy_r="scrcpy -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
 alias vsdebug="curl 'https://raw.githubusercontent.com/pritam12426/systme-configuration/main/global/vscode/launch.json' -o launch.json"
+
+# exiftool
+alias exf="exiftool -sort -P -overwrite_original_in_place"
+alias exfimg="exiftool -b -Picture -W%d%f_cover.jpg"
+alias exfcpy="exf -TagsFromFile"
+alias exfchimg="exf -Picture"
+
+
+
 
 # yt-dlp
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
