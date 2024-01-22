@@ -46,9 +46,9 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("i", "jk", "<ESC>")
 
 -- nice to have
-keymap.set("n", "<leader>w", ":w<CR>")
-keymap.set("n", "<leader>q", ":q!<CR>")
-keymap.set("n", "<leader>x", ":x<CR>")
+-- keymap.set("n", "<leader>w", ":w<CR>")
+-- keymap.set("n", "<leader>q", ":q!<CR>")
+-- keymap.set("n", "<leader>x", ":x<CR>")
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
