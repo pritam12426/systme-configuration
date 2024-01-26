@@ -22,7 +22,6 @@ alias gpmain='git push origin main'
 alias gp='git push origin'
 alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
 
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -46,7 +45,6 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-
 # System scripts
 alias lfind="alias | grep -i "
 alias tree="tre -e"
@@ -65,9 +63,6 @@ alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias exfimg="exiftool -b -Picture -W%d%f_cover.jpg"
 alias exfcpy="exf -TagsFromFile"
 alias exfchimg="exf -Picture"
-
-
-
 
 # yt-dlp
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
