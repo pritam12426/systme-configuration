@@ -1,6 +1,3 @@
-" I use vim Plug for my package manager for nvim.
-" :PlugInstall
-
 :set number
 :set nowrap
 :set mouse=a
@@ -10,7 +7,7 @@
 " :set shiftwidth=4
 :set softtabstop=4
 :set relativenumber
-set clipboard+=unnamedplus
+:set clipboard+=unnamedplus
 
 :set list
 :set lcs+=space:·
@@ -25,10 +22,9 @@ set clipboard+=unnamedplus
 " Shortcut keys
 nnoremap <C-s> :w<CR>
 nnoremap <C-w> :q!<CR>
-nnoremap <C-v> :r !pbpaste<CR>
-nnoremap <C-c> :w !pbcopy<CR>
 nnoremap <C-d> :q!<CR>
 nnoremap <C-j> :term<CR>
-nnoremap <A-z> :set wrap<CR>
-" nnoremap <A-k> :w<CR>:!comp %<CR>
+nnoremap <C-z> :set wrap<CR>
+nnoremap <C-k> :w<CR>:!comp %<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap :q :q!
