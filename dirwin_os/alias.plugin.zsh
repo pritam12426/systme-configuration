@@ -56,7 +56,7 @@ alias findds="find . -type f -name '.DS_Store'"
 alias envpath="echo $PATH | tr ':' '\n' | bat"
 alias removeds="echo 'removed:' && findds && find . -name '.DS_Store' -exec rm -f {} +"
 alias scrcpy_r="scrcpy -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
-alias vsdebug="curl 'https://raw.githubusercontent.com/pritam12426/systme-configuration/main/global/vscode/launch.json' -o launch.json"
+alias vsdebug="mkdir -p '.vscode' && curl 'https://raw.githubusercontent.com/pritam12426/systme-configuration/main/global/vscode/launch.json' -o launch.json"
 
 # exiftool
 alias exf="exiftool -sort -P -overwrite_original_in_place"
