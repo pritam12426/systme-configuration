@@ -28,3 +28,4 @@ nnoremap <C-z> :set wrap<CR>
 nnoremap <C-k> :w<CR>:!comp %<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap :q :q!
+
