@@ -108,7 +108,7 @@ int main(int argc, char *argv[]) {
 		sprintf(another_command, "%s%s%s", TEMP_DIR, actual_file_name, FILE_EXTENSION);
 		printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", another_command);
 
-		if (system(another_command) == 0) putchar('\n');
+		system(another_command);
 	}
 
 	return 0;
