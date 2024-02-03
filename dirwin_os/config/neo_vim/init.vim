@@ -8,10 +8,12 @@
 :set softtabstop=4
 :set relativenumber
 :set clipboard+=unnamedplus
-
 :set list
 :set lcs+=space:·
 :set autoindent noexpandtab tabstop=4 shiftwidth=4
+
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 
 " :set guicursor=n-v-c-i:block
 
