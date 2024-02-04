@@ -31,3 +31,9 @@ nnoremap <C-k> :w<CR>:!comp %<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap :q :q!
 
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
