@@ -7,7 +7,7 @@
 " :set shiftwidth=4
 :set softtabstop=4
 :set relativenumber
-:set clipboard+=unnamedplus
+" :set clipboard+=unnamedplus
 :set list
 :set lcs+=space:·
 :set autoindent noexpandtab tabstop=4 shiftwidth=4
@@ -37,3 +37,4 @@ inoremap [ []<Esc>i
 
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
+inoremap ` ``<Esc>i

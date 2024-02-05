@@ -9,8 +9,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # For neo nvim
 alias erc="nvim ~/.zshrc"
-alias evrc="sudo vim /etc/vim/vimrc" 
-alias enrc="nvim ~/.config/nvim/init.vim" 
+alias evrc="sudo vim /etc/vim/vimrc"
+alias enrc="nvim ~/.config/nvim/init.vim"
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # Git alias
@@ -46,6 +46,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # System scripts
+alias m="make"
 alias lfind="alias | grep -i "
 alias tree="tre -e"
 alias hc="cat /dev/null > ~/.zsh_history"
@@ -136,4 +137,3 @@ alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ip
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"  # will print the loal ipv4 in termial.
 alias macid="ifconfig -a | grep ether | grep -oE '([0-9][0-9]:[a-z][0-9]:[a-z][a-z]:[a-z][a-z]:[0-9][0-9]:[0-9][0-9])' | head -n 1"  # will print the return the macid of the computer
 alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1"
-
