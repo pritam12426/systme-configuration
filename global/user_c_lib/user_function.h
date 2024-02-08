@@ -107,14 +107,10 @@ bool strEndWith(const char *_content, const char *_ends) {
 
 
 void bubbleSort(int *_arr, unsigned long _len) {
-	int temp;
-
 	for (int i = 0; i < _len; i++) {
 		for (int j = 0; j < (_len - i - 1); j++) {
 			if(_arr[j] > _arr[j + 1]){
-				temp = _arr[j];
-				_arr[j] = _arr[j + 1];
-				_arr[j + 1] = temp;
+				_arr[i] ^= _arr[(i + 1)] ^= _arr[i] ^= _arr[(i + 1)];
 			}
 		}
 	}
