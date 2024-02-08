@@ -6,6 +6,8 @@ if [[ $# -eq 0 ]]; then
 		file="main.c"
 	elif [ -f "main.cpp" ]; then
 		file="main.cpp"
+	elif [ -f "main.py" ]; then
+		file="main.py"
 	elif [ -f "main.rs" ]; then
 		file="main.rs"
 	else
