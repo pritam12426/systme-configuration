@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -108,7 +109,16 @@ int main(int argc, char *argv[]) {
 		sprintf(another_command, "%s%s%s", TEMP_DIR, actual_file_name, FILE_EXTENSION);
 		printf("[\033[1;35mRUNNING\033[0m] { \033[1;36m%s\033[0m }\n", another_command);
 
-		system(another_command);
+		clock_t start_time = clock();
+		if(system(another_command) == 0) {
+			double elapsed_time_ms = ((double)(clock() - start_time) / CLOCKS_PER_SEC) * 1000;
+			printf("[FINISHED IN COLOR \033[1;32m%f\033[0m ms]\n", elapsed_time_ms);
+		}
+		else {
+			double elapsed_time_ms = ((double)(clock() - start_time) / CLOCKS_PER_SEC) * 1000;
+			printf("[FINISHED IN COLOR \033[1;31m%f\033[0m ms]\n", elapsed_time_ms);
+			return 1;
+		}
 	}
 
 	return 0;
