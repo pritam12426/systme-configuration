@@ -110,7 +110,7 @@ void bubbleSort(int *_arr, size_t _len) {
 	for (int i = 0; i < _len; i++) {
 		for (int j = 0; j < (_len - i - 1); j++) {
 			if(_arr[j] > _arr[j + 1]){
-				_arr[i] ^= _arr[(i + 1)] ^= _arr[i] ^= _arr[(i + 1)];
+				_arr[j] ^= _arr[(j + 1)] ^= _arr[j] ^= _arr[(j + 1)];
 			}
 		}
 	}
