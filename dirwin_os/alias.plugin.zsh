@@ -73,12 +73,10 @@ alias yt-dlpx="yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias short="yt-dlp --no-embed-thumbnail --no-mtime -o '~/Downloads/yt_dlp/youtube_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
 
-alias song="ffplay -vf \"crop=h=800\" -ss 6741 -t 70 -loop -1 ~/Movies/movies/brahmastra_part_1.mkv -window_title ' ' >/dev/null 2>&1"
-
 # NNN file manager
 export NNN_COLORS='5236'
 export NNN_OPTS="RAUNdxe"
-export NNN_OPENER="r"
+export NNN_OPENER="qqqq"
 export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_PLUG='g:gitroot;c:cbcopy-mac'

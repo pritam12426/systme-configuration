@@ -7,7 +7,7 @@
 " :set shiftwidth=4
 :set softtabstop=4
 :set relativenumber
-" :set clipboard+=unnamedplus
+:set clipboard+=unnamedplus
 :set list
 :set lcs+=space:·
 :set autoindent noexpandtab tabstop=4 shiftwidth=4
@@ -29,6 +29,7 @@ nnoremap <C-j> :term<CR>
 nnoremap <C-z> :set wrap<CR>
 nnoremap <C-k> :w<CR>:!comp %<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <S-yy> :"y+<CR>
 nnoremap :q :q!
 
 inoremap ( ()<Esc>i

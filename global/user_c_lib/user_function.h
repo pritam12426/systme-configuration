@@ -14,7 +14,7 @@ int countOfInt(int x) {
 		x /= 10;
 		_count++;
 	}
-	
+
 	return _count;
 }
 
@@ -77,7 +77,7 @@ void strSwitchCase(char *_content) {
 		}
 		else if (_content[i] >= 97 && _content[i] <= 122){
 			_content[i] = (_content[i] - 32);
-		} 
+		}
 	}
 }
 
@@ -106,7 +106,7 @@ bool strEndWith(const char *_content, const char *_ends) {
 }
 
 
-void bubbleSort(int *_arr, unsigned long _len) {
+void bubbleSort(int *_arr, size_t _len) {
 	for (int i = 0; i < _len; i++) {
 		for (int j = 0; j < (_len - i - 1); j++) {
 			if(_arr[j] > _arr[j + 1]){
