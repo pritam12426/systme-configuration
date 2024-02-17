@@ -1,4 +1,5 @@
 # defaults write com.apple.dock autohide-delay -float 0 && defaults write com.apple.dock autohide-time-modifier -float 0.1
+# sudo nvram AutoBoot=%00 || sudo nvram AutoBoot=%03	///	Disable Boot on Lid Open 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/Developer/system_script:$PATH
 
