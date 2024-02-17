@@ -26,7 +26,7 @@ if [[ "$file" =~ .c$ ]]; then
 elif [[ "$file" =~ .cpp$ ]]; then
 	command="g++"
 elif [[ "$file" =~ .rs$ ]]; then
-	cargo run 
+	cargo run
 	exit "$?"
 elif [[ "$file" =~ makefile$ ]]; then
 	make
