@@ -22,9 +22,9 @@ fi
 
 # Checking file type.
 if [[ "$file" =~ .c$ ]]; then
-	command="gcc"
+	command="clang"
 elif [[ "$file" =~ .cpp$ ]]; then
-	command="g++"
+	command="clang++"
 elif [[ "$file" =~ .rs$ ]]; then
 	cargo run
 	exit "$?"
@@ -52,6 +52,7 @@ else
 		exit 1
 	fi
 fi
+
 
 filename=$(basename "$file")
 path=$(dirname "$file")
