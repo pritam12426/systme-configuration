@@ -19,12 +19,15 @@ else
 	file="$1"
 fi
 
+GNU_version=""
 
 # Checking file type.
 if [[ "$file" =~ .c$ ]]; then
 	command="clang"
+	# GNU_version="-std=c20"
 elif [[ "$file" =~ .cpp$ ]]; then
 	command="clang++"
+	GNU_version="-std=c++20"
 elif [[ "$file" =~ .rs$ ]]; then
 	cargo run
 	exit "$?"
@@ -63,7 +66,7 @@ new_name="${filename//./-}"
 # Make bin dir if it is not present.
 
 # Run command for 'gcc' or 'gpp' according to the file type.
-("$command" "$path/$filename" -o "$TMPDIR$new_name.out")
+("$command" "$GNU_version" "$path/$filename" -o "$TMPDIR$new_name.out")
 
 if [[ "$?" = 0 ]]; then
 	"$TMPDIR$new_name.out"
