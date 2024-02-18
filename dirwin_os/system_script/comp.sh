@@ -4,12 +4,16 @@
 if [[ $# -eq 0 ]]; then
 	if [ -f "main.c" ]; then
 		file="main.c"
+		echo "compiling main.c ..."
 	elif [ -f "main.cpp" ]; then
 		file="main.cpp"
+		echo "compiling main.cpp ..."
 	elif [ -f "main.py" ]; then
-		file="main.py"
+		file="main.py"		
+		echo "compiling main.py ..."
 	elif [ -f "main.rs" ]; then
 		file="main.rs"
+		echo "compiling main.rs ..."
 	else
 		echo "comp: missing operand"
 		exit 1

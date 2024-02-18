@@ -30,6 +30,7 @@ alias hdir="cd ~/Developer/html/"
 alias rdir="cd ~/Developer/rust/"
 alias spdir="cd ~/Developer/system_script/"
 alias cdir="cd ~/Developer/c_lang/practic/"
+alias ldir="cd ~/Developer/c_lang/leedcode/"
 alias pydir="cd ~/Developer/python/practic/"
 alias gdir="cd ~/Developer/git_repositories/"
 alias tdir="cd /Volumes/T7/main/videos/courses/"
@@ -41,12 +42,11 @@ export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
 export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # System scripts
-alias m="make"
+alias c="code"
 alias lfind="alias | grep -i "
 alias tree="tre -e"
 alias z="zed"
