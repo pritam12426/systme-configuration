@@ -46,7 +46,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # System scripts
-alias c="code"
 alias lfind="alias | grep -i "
 alias tree="tre -e"
 alias z="zed"

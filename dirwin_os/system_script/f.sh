@@ -1,6 +1,6 @@
 #!/opt/homebrew/bin/bash
 
-findparms=(-maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
+findparms=(-maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm' -or -name '*.part')  # The filter to find the file using `find` command
 
 # if [[ "$PWD" == "$HOME/Downloads/yt_dlp"* ]]; then
 # 	findparms=(-type f -mtime -1 -maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm') # The filter to find the file using `find` command
@@ -40,7 +40,7 @@ title_opction=""
 		title_opction+="kbps'"
 
 		command+="ffplay -loop -1 -nostats -seek_interval 2 -window_title"
-	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ]; then
+	elif [ "$extension" == "mp4" ] || [ "$extension" == "mkv" ] || [ "$extension" == "mov" ] || [ "$extension" == "webm" ] || [ "$extension" == "part" ]; then
 
 		title_opction+="'"
 		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=s=x:p=0 "$sk_passed_file")
