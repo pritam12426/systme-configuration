@@ -49,6 +49,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 alias lfind="alias | grep -i "
 alias tree="tre -e"
 alias z="zed"
+alias mvin="mvim -O"
 alias hc="cat /dev/null > ~/.zsh_history"
 alias nq="networkquality -s"
 alias gfind="ls -aF --color=auto | grep -i"
