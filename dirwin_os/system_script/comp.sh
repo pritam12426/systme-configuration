@@ -45,6 +45,9 @@ elif [[ "$file" =~ .html$ ]]; then
 elif [[ "$file" =~ .py$ ]]; then
 	python3 "$file"
 	exit "$?"
+elif [[ "$file" =~ .js$ ]]; then
+	node "$file"
+	exit "$?"
 elif [[ "$file" =~ .sh$ ]]; then
 	"$file"
 	exit "$?"
