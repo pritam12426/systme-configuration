@@ -47,6 +47,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # System scripts
 alias lfind="alias | grep -i "
+alias python="python3"
 alias tree="tre -e"
 alias z="zed"
 alias mvin="mvim -O"
