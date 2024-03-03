@@ -24,6 +24,7 @@ else
 fi
 
 GNU_version=""
+path=$(dirname "$file")
 
 # Checking file type.
 if [[ "$file" =~ .c$ ]]; then
@@ -36,7 +37,7 @@ elif [[ "$file" =~ .rs$ ]]; then
 	cargo run
 	exit "$?"
 elif [[ "$file" =~ makefile$ ]]; then
-	make
+	make -C $path -f $file
 	exit "$?"
 elif [[ "$file" =~ .html$ ]]; then
 	open "$file"
@@ -65,7 +66,6 @@ fi
 
 
 filename=$(basename "$file")
-path=$(dirname "$file")
 
 # new_name="${file%.*}"
 new_name="${filename//./-}"
