@@ -1,5 +1,4 @@
 # This file conten only aliases for "zsh/bash"
-
 # linux ls color theme
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
