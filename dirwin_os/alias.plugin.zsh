@@ -13,8 +13,6 @@ alias enrc="nvim ~/.config/nvim/init.vim"
 alias eza="nvim ~/.oh-my-zsh/plugins/alias/alias.plugin.zsh"
 
 # Git alias
-alias l="lsd -lhaF"
-alias ll="lsd -lhF"
 alias ga='git add'
 alias gaa='git add --all'
 alias gst='git status'
