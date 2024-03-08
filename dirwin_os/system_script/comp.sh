@@ -1,27 +1,32 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
 # Giving default file path.
+
 if [[ $# -eq 0 ]]; then
 	if [ -f "main.c" ]; then
 		file="main.c"
 		echo "compiling main.c ..."
+
 	elif [ -f "main.cpp" ]; then
 		file="main.cpp"
 		echo "compiling main.cpp ..."
+
 	elif [ -f "main.py" ]; then
-		file="main.py"		
+		file="main.py"
 		echo "compiling main.py ..."
+
 	elif [ -f "main.rs" ]; then
 		file="main.rs"
 		echo "compiling main.rs ..."
+
 	else
 		echo "comp: missing operand"
 		exit 1
 	fi
-	# echo -e "\r|-> Compling '$file' file. <-|\r"
 else
 	file="$1"
 fi
+
 
 GNU_version=""
 path=$(dirname "$file")
@@ -29,29 +34,39 @@ path=$(dirname "$file")
 # Checking file type.
 if [[ "$file" =~ .c$ ]]; then
 	command="clang"
-	# GNU_version="-std=c20"
+
 elif [[ "$file" =~ .cpp$ ]]; then
 	command="clang++"
 	GNU_version="-std=c++20"
+
 elif [[ "$file" =~ .rs$ ]]; then
 	cargo run
 	exit "$?"
+
 elif [[ "$file" =~ makefile$ ]]; then
 	make -C $path -f $file
 	exit "$?"
+
 elif [[ "$file" =~ .html$ ]]; then
 	open "$file"
 	exit 0
-	# command="rustc"
+
 elif [[ "$file" =~ .py$ ]]; then
 	python3 "$file"
 	exit "$?"
+
+elif [[ "$file" =~ .java$ ]]; then
+	java "$file"
+	exit "$?"
+
 elif [[ "$file" =~ .js$ ]]; then
 	node "$file"
 	exit "$?"
+
 elif [[ "$file" =~ .sh$ ]]; then
 	"$file"
 	exit "$?"
+
 else
 	root_data=$(cat "$file" | head -n 1 | cut -c 3-)
 
