@@ -33,6 +33,7 @@ path=$(dirname "$file")
 
 # Checking file type.
 if [[ "$file" =~ .c$ ]]; then
+	GNU_version="-std=c2x"
 	command="clang"
 
 elif [[ "$file" =~ .cpp$ ]]; then
