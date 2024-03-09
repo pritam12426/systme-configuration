@@ -70,8 +70,8 @@ alias exfchimg="exf -Picture"
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
 alias yt-dlpx="yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias short="yt-dlp --no-embed-thumbnail --no-mtime -o '~/Downloads/yt_dlp/youtube_short/%(channel)s-%(title)s_%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/insta/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
+alias short="yt-dlp --no-embed-thumbnail --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
+alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
 
 # NNN file manager
 export NNN_COLORS='5236'

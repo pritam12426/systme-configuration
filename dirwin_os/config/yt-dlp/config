@@ -1,6 +1,7 @@
 -o "~/Downloads/yt_dlp/video/%(title)s.%(ext)s"
 -f "137+140/bestvideo*[height=1080][ext=mp4][fps<=30]+bestaudio*[ext=m4a]/bestvideo*[height=1080][ext=mp4][fps<=60]+bestaudio*[ext=m4a]/bestvideo*[height<=1080][ext=mp4]"
 
+--console-title
 --embed-chapters
 --embed-metadata
 --embed-thumbnail
