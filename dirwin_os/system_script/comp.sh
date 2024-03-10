@@ -41,7 +41,7 @@ elif [[ "$file" =~ .cpp$ ]]; then
 	GNU_version="-std=c++20"
 
 elif [[ "$file" =~ .rs$ ]]; then
-	cargo run
+	cargo run -q
 	exit "$?"
 
 elif [[ "$file" =~ makefile$ ]]; then
