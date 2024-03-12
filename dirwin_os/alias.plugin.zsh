@@ -6,6 +6,10 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Some more alies
+alias cp="cp -ip"
+alias mv="mv -ip"
+
 # For neo nvim
 alias erc="nvim ~/.zshrc"
 alias evrc="sudo vim /etc/vim/vimrc"
