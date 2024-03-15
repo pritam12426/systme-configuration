@@ -123,7 +123,8 @@ if ".git" in os.listdir("."):
 		print("\n")
 
 for i in keys_new_name:
-	os.rename(i, new_name.get(i))
+	# os.rename(i, new_name.get(i))
+	print(i, new_name.get(i))
 
 if len(all_file) >= 2:
 	print(

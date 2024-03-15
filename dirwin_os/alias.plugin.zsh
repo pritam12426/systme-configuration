@@ -8,7 +8,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # Some more alies
 alias cp="cp -ip"
-alias mv="mv -ip"
+alias mv="mv -i"
+alias du="du -h"
 
 # For neo nvim
 alias erc="nvim ~/.zshrc"
@@ -59,9 +60,9 @@ alias hc="cat /dev/null > ~/.zsh_history"
 alias gfind="ls -aF --color=auto | grep -i"
 alias lh="ls -aF --color=auto | egrep '^\.'"
 alias envpath="echo $PATH | tr ':' '\n' | bat"
-alias findds="find . -type f -name '.DS_Store' -name '*.swp'"
+alias findds="find . -type f -name '.DS_Store'"
 alias scrcpy_r="scrcpy -r ~/Movies/screen_cast/scrcpy_$(date +'%Y-%m-%d_%H-%M-%S').mp4"
-alias removeds="echo 'removed:' && findds && find . -name '.DS_Store' -name '*.swp' -exec rm -f {} +"
+alias removeds="echo 'removed:' && findds && find . -name '.DS_Store' -exec rm -f {} +"
 alias vsdebug="mkdir -p '.vscode' && curl 'https://raw.githubusercontent.com/pritam12426/systme-configuration/main/global/vscode/launch.json' -o launch.json"
 
 # exiftool
@@ -75,13 +76,13 @@ alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
 alias yt-dlpx="yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
 alias short="yt-dlp --no-embed-thumbnail --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s_%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
+alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s-%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
 
 # NNN file manager
 export NNN_COLORS='5236'
 export NNN_OPTS="RAUNdxe"
 export NNN_OPENER="qqqq"
-export NNN_PLUG='g:gitroot;c:cbcopy-mac'
+export NNN_PLUG='g:gitroot;c:cbcopy-mac;r:-rename'
 export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="d:~/Developer/;s:/Volumes/T7/main/videos/;y:~/Downloads/yt_dlp/;m:~/Music/local/"

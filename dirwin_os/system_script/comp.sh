@@ -89,7 +89,7 @@ new_name="${filename//./-}"
 # Make bin dir if it is not present.
 
 # Run command for 'gcc' or 'gpp' according to the file type.
-("$command" "$GNU_version" "$path/$filename" -o "$TMPDIR$new_name.out")
+("$command" -Wall "$GNU_version" "$path/$filename" -o "$TMPDIR$new_name.out")
 
 if [[ "$?" = 0 ]]; then
 	"$TMPDIR$new_name.out"
