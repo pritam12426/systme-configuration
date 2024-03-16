@@ -73,18 +73,17 @@ alias exf="exiftool -sort -P -overwrite_original_in_place"
 
 # yt-dlp
 alias yt-dlpwd="yt-dlp -o '%(title)s.%(ext)s'"
-alias yt-dlpx="yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
+alias yt-dlpx="yt-dlp -o '%(extractor)s-%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias yt-dlpp="yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
-alias short="yt-dlp --no-embed-thumbnail --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(channel)s-%(id)s-%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
+alias short="yt-dlp --no-embed-thumbnail --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(extractor_key)s-%(channel)s-%(id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
+alias insta="yt-dlp --no-mtime -o '~/Downloads/yt_dlp/short_vidoes/%(extractor_key)s-%(channel)s-%(id)s-%(uploader_id)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' --cookies-from-browser 'firefox'"
 
 # NNN file manager
-export NNN_COLORS='5236'
+export NNN_COLORS="5236"
 export NNN_OPTS="RAUNdxe"
 export NNN_OPENER="qqqq"
-export NNN_PLUG='g:gitroot;c:cbcopy-mac;r:-rename'
-export NNN_FIFO=/Users/pritam/Library/Caches
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+export NNN_PLUG='g:gitroot;c:cbcopy-mac;r:-!renamepwd "$nnn";e:!|exiftool "$nnn"'
 export NNN_BMS="d:~/Developer/;s:/Volumes/T7/main/videos/;y:~/Downloads/yt_dlp/;m:~/Music/local/"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
@@ -106,13 +105,6 @@ nnn ()
 	}
 }
 
-function pathcp {
-	# local file="${1:-.}"
-	local file="${1:-}"
-	[[ $file = /* ]] || file="$PWD/$file"
-	echo "${file:a}" | tr  '\n' ' ' | pbcopy
-}
-
 LANG="en_US.UTF-8"
 LC_COLLATE="en_US.UTF-8"
 LC_CTYPE="en_US.UTF-8"
@@ -121,6 +113,13 @@ LC_MONETARY="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
 LC_ALL=
+
+function pathcp {
+	# local file="${1:-.}"
+	local file="${1:-}"
+	[[ $file = /* ]] || file="$PWD/$file"
+	echo "${file:a}" | tr  '\n' ' ' | pbcopy
+}
 
 # IP / macId alias and functions
 alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | bash"
