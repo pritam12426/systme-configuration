@@ -202,13 +202,14 @@ match input("Insert m, u, p >> "):
 				if is_int(user) and int(user) <= (len(all_file) - 1):
 					user: int = int(user)
 					run(["mpv", f"{directory_path + all_file[user]}"])
-					# print(["mpv", f"{directory_path + all_file[user]}"])
+					os.system("clear")
 				elif user == "r":
 					command: str = choice(all_file)	
 					element: str = f"● SO/no > '{all_file.index(command)}' > '{json_info.get(command).get('title')}'"
 					print(element)
 					print("=" * len(element))
 					run(["mpv" ,f"{directory_path + command}"])
+					os.system("clear")
 				else:
 					print("Invalid input.")
 				continue
@@ -234,7 +235,6 @@ match input("Insert m, u, p >> "):
 			else:
 				print("Invalid input.")
 				continue
-
 			title: str = f"{all_file.index(command)} - {json_info.get(command).get('title')}, '{json_info.get(command).get('height')}p' * '{json_info.get(command).get('duration')}'"
 			run(["ffplay", "-window_title", title, "-loop", "-1", directory_path + command], capture_output=True)
 	case "u":
