@@ -201,13 +201,14 @@ match input("Insert m, u, p >> "):
 				user = user.removeprefix("o")
 				if is_int(user) and int(user) <= (len(all_file) - 1):
 					user: int = int(user)
-					run(["open", f"{directory_path + all_file[user]}"])
+					run(["mpv", f"{directory_path + all_file[user]}"])
+					# print(["mpv", f"{directory_path + all_file[user]}"])
 				elif user == "r":
 					command: str = choice(all_file)	
 					element: str = f"● SO/no > '{all_file.index(command)}' > '{json_info.get(command).get('title')}'"
 					print(element)
 					print("=" * len(element))
-					run(["open" ,f"{directory_path + command}"])
+					run(["mpv" ,f"{directory_path + command}"])
 				else:
 					print("Invalid input.")
 				continue

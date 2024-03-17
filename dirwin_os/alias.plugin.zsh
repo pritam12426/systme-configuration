@@ -27,7 +27,7 @@ alias gaa='git add --all'
 alias gp='git push origin'
 alias gss='git status --short'
 alias gpmain='git push origin main'
-alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com'"
+alias githubconfig="git config user.name 'Pritam' && git config user.email '84720825+pritam12426@users.noreply.github.com' && git config tag.gpgsign true"
 
 # For change dir()
 alias hdir="cd ~/Developer/html/"
