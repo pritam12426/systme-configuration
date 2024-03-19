@@ -13,11 +13,16 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # PS1 Variables
 # PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
-PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'" $ "
+# PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'"  "
 # RPROMPT="~ %F{241}%t%f"
 
 # Theme
 # ZSH_THEME="robbyrussell"
+# ZSH_THEME="sonicradish"
+# ZSH_THEME="aussiegeek"
+ZSH_THEME="duellj"
+# ZSH_THEME="af-magic"
+# ZSH_THEME="afowler"
 
 export EDITOR='nvim'
 # Set list of themes to pick from when loading at random
