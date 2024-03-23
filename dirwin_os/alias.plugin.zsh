@@ -121,6 +121,12 @@ function pathcp {
 	echo "${file:a}" | tr  '\n' ' ' | pbcopy
 }
 
+#  For commit the commit with gpg
+GPG_TTY=$(tty)
+export GPG_TTY
+
+
+
 # IP / macId alias and functions
 alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | bash"
 alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"  # will print the loal ipv4 in termial.

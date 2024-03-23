@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/opt/homebrew/bin/bash
 
 # Giving default file path.
 
@@ -81,8 +81,8 @@ filename=$(basename "$file")
 new_name="${filename//./-}"
 
 # Run command for 'gcc' or 'gpp' according to the file type.
-echo -e "$command -Wall $GNU_version $filename"
-("$command" -Wall "$GNU_version" "$path/$filename" -o "$TMPDIR$new_name.out")
+echo -e "$command -Wall -arch arm64 $GNU_version $filename"
+("$command" -Wall -arch arm64 "$GNU_version" "$path/$filename" -o "$TMPDIR$new_name.out")
 
 if [[ "$?" = 0 ]]; then
 	"$TMPDIR$new_name.out"
