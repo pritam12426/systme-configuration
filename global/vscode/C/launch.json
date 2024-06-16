@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/main.out",
+      "MIMode": "lldb",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+
+      "preLaunchTask": "Debug C progarm"
+      // "preLaunchTask": "Run debug CXX code",
+    }
+  ]
+}

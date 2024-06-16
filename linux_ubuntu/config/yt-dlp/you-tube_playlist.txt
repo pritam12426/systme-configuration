@@ -1,0 +1,7 @@
+-o "~/Downloads/yt_dlp/%(playlist)s/%(playlist_index)s-%(title)s.%(ext)s"
+-f "137+140/bestvideo*[height=1080][ext=mp4][fps<=30]+bestaudio*[ext=m4a]/bestvideo*[height=1080][ext=mp4][fps<=60]+bestaudio*[ext=m4a]/bestvideo*[height<=1080]"
+
+--embed-chapters
+--embed-thumbnail
+--embed-metadata
+--embed-subs

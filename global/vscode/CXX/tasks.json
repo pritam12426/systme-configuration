@@ -1,0 +1,75 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Run cpp code",
+      "command": "${fileDirname}/main.out",
+      "args": [
+        "<",
+        "/tmp/input.txt"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": "Build CPP Binary",
+    },
+    {
+      "type": "shell",
+      "label": "Build CPP Binary",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=gnu++2b",
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-Wall",
+        "-pedantic",
+        "-arch",
+        "arm64",
+        "-I",
+        "/opt/homebrew/include",
+        "-L",
+        "/opt/homebrew/lib/",
+        "${file}",
+        "-o",
+        "${fileDirname}/main.out"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "detail": "compiler: CPP Code With Apple Clang",
+      "group": {
+        "kind": "build",
+        // "isDefault": true
+      }
+    },
+    {
+      "type": "shell",
+      "label": "Debug cpp progarm",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=gnu++2b",
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-Wall",
+        "-pedantic",
+        "-arch",
+        "arm64",
+        "-g",
+        "-I",
+        "/opt/homebrew/include",
+        "-L",
+        "/opt/homebrew/lib/",
+        "${file}",
+        "-o",
+        "${fileDirname}/main.out"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "group": "build",
+      "detail": "Debugging: Cpp Progarm Using lldb"
+    }
+  ]
+}

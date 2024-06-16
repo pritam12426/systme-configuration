@@ -1,0 +1,20 @@
+GENERAL COMMANDS -------------|------------------|=====================================================
+      KEY     |     MODE      |    RETURN MODE   |              WORK
+       $      |    Normal     |       Normal     |  Go to the end the line
+       0      |    Normal     |       Normal     |  Go to the start Of the line
+       ~      |    Normal     |       Normal     |  Toggle case
+    :help `x` |    Command    |      Help page   |  Toggle case
+G COMMANDS ---|---------------|------------------|=====================================================
+      g~~     |    Normal     |       Normal     |  Toggle case of whole line
+      gv      |    Normal     |       Visual     |  Jumps back to the text you have last seclated
+      g&      |    Normal     |       Normal     |  Runs the last command very Important
+      g$      |    Normal     |       Normal     |  Go to the end of the visual line
+      g0      |    Normal     |       Normal     |  Go to the start of the visual line
+     guu      |    Normal     |       Normal     |  Make all case to lower of the whole line
+     gUU      |    Normal     |       Normal     |  Make all case to UPPER of the whole line
+     gUiw     |    Normal     |       Normal     |  Make all case to UPPER inside a word
+    gUi`n`w   |    Normal     |       Normal     |  Make all case to UPPER inside a word
+      gf      |    Normal     |       Normal     |  Go to the file 
+    ctrl + ^  |    Normal     |       Normal     |  To return to the file you have to open with `gf`
+G COMMANDS ---|---------------|------------------|=====================================================
+

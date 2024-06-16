@@ -1,0 +1,10 @@
+(
+	shift: Some("🠱"),
+	enter: Some("enter"),
+	tab: Some("⇌"),
+	esc: Some("esc"),
+	alt: Some("alt"),
+	control: Some("ctrl"),
+	delete: Some("delete")
+)
+

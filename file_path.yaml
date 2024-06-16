@@ -1,0 +1,23 @@
+# Local git repo path in which you wants to sync your files.
+# Example: Syncing files to the 'my_config' repository on GitHub
+git_dir: "/home/pritam/Desktop/programming/git_repositories/my_config/"
+
+# Single file path with some keys.
+".bashrc":
+    # The folder path where the original file is located.
+    # Example: The '.bashrc' file is located in the '/home/pritam/' directory.
+    "sys_dir": "/home/pritam/"
+
+    # The folder path inside the local git repo where you want to sync the file.
+    # Example: The '.bashrc' file will be synced to the 'linux_ubuntu/' folder.
+    "gdir": "linux_ubuntu/"
+
+    # The new name for the file inside the git repo.
+    # Example: The '.bashrc' file will be renamed to 'bashrc.sh' in the git repo.
+    "new_name": "bashrc.sh"
+
+".zhsrc":
+    "sys_dir": "/home/pritam/"
+    "gdir": "linux_ubuntu/"
+    "new_name": "zshrc.sh"
+

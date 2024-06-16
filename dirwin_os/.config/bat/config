@@ -1,0 +1,4 @@
+--style=plain
+--map-syntax "*.ino:C++"
+--tabs 4
+--pager "less -RF"
