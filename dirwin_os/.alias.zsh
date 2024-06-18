@@ -1,4 +1,4 @@
-#  defaults write com.apple.dock autohide-time-modifier -float 0.5; defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock showhidden -bool YES; killall Dock
+#  defaultn write com.apple.dock autohide-time-modifier -float 0.5; defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock showhidden -bool YES; killall Dock
 #  LINUX LS COLOR THEME
 
 export CLICOLOR=1
@@ -19,7 +19,7 @@ export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_OPENER="open"
 export NNN_HELP="cat $HOME/Developer/git_repositories/my_dotfiles/global/nnn_help.txt"
 export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
-export NNN_PLUG='g:gitroot;r:-!renamepwd "$nnn";e:!|exiftool "$nnn";n:-fixname;s:-oldbigfile'
+export NNN_PLUG='g:gitroot;r:-!rrr "$nnn";e:!|exiftool "$nnn";n:-fixname;s:-oldbigfile'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
 

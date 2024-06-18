@@ -62,8 +62,15 @@ def get_dict(_list_of_content: list[str]) -> dict:
 						_file += 1
 					else:
 						_untouched += 1
-				elif _i.lower().startswith("makefile"):
+				elif _i.lower() == "makefile":
 					_new_name: str = "Makefile"
+					if _i != _new_name:
+						_result |= {_i: _new_name}
+						_file += 1
+					else:
+						_untouched += 1
+				elif _i.lower() == "cmakelists.txt":
+					_new_name: str = "CMakeLists.txt"
 					if _i != _new_name:
 						_result |= {_i: _new_name}
 						_file += 1

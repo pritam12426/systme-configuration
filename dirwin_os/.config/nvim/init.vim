@@ -1,22 +1,28 @@
-:set autoindent expandtab tabstop=4 shiftwidth=4
-:set autoread
-:set ignorecase
-:set iskeyword-=_
-:set langmenu=en_US.UTF-8
-:set mouse=a
-:set nowrap
-:set number
-:set relativenumber
-:set smartcase
+set autoindent expandtab tabstop=4 shiftwidth=4
+set autoread
+set ignorecase
+set iskeyword-=_
+set langmenu=en_US.UTF-8
+set mouse=a
+set nowrap
+set number
+set relativenumber
+set shell=bash
 
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * set norelativenumber
+autocmd InsertLeave * set relativenumber
 
-" :set guicursor=n-v-c-i:block
+" let mapleader=","
+" map <leader>y "*y
+
+"" Searching
+set hlsearch                      " highlight matches
+set incsearch                     " incremental searching
+set ignorecase                    " searches are case insensitive...
+set smartcase                     " ... unless they contain at least one capital letter
+set gdefault                      " have :s///g flag by default on
 
 " --- theme ---
-" :colorscheme jellybeans
-" :colorscheme atom
 :colorscheme murphy
 
 " Shortcut keys
